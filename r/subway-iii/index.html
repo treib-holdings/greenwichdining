@@ -86,6 +86,18 @@ h1{font-family:"Zilla Slab",Georgia,serif;font-size:2rem;margin:0 0 6px;text-wra
 .share button:focus-visible,.share a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 footer{margin-top:44px;padding-top:18px;border-top:1px solid var(--line);font-size:.82rem;color:var(--ink-3)}
 footer a{color:var(--accent)}
+.fnav2{display:flex;flex-wrap:wrap;gap:6px 18px;margin-bottom:12px}
+.fnav2 a{font-weight:600;text-decoration:none}
+.fnav2 a:hover{text-decoration:underline}
+.related{margin-top:38px;border-top:1px solid var(--line);padding-top:6px}
+.related h2{font-family:"Zilla Slab",Georgia,serif;font-size:1.02rem;margin:20px 0 9px}
+.rel{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:2px}
+.rel a{display:flex;align-items:center;gap:9px;padding:7px 9px;border-radius:6px;
+ text-decoration:none;color:var(--ink);font-size:.9rem}
+.rel a:hover{background:var(--soft);color:var(--accent)}
+.dot{width:7px;height:7px;border-radius:50%;flex:none}
+.d-clean{background:var(--clean)}.d-minor{background:var(--minor)}
+.d-priority{background:var(--prio)}.d-unverified,.d-none{background:var(--pend)}
 @media(max-width:560px){h1{font-size:1.6rem}}
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "LocalBusiness", "name": "Subway III", "url": "https://greenwichdining.com/r/subway-iii/", "address": {"@type": "PostalAddress", "streetAddress": "469 WEST PUTNAM AVENUE Unit:475", "addressLocality": "Greenwich", "addressRegion": "CT", "addressCountry": "US"}}</script>
@@ -108,7 +120,9 @@ footer a{color:var(--accent)}
  <div class="share">
   <button type="button" id="sh">Share this record</button>
   <a href="/">Search all establishments</a>
+  <a href="/all/">Full A–Z list</a>
  </div>
+ <section class="related"><h2>Other restaurant / bar in Greenwich</h2><ul class="rel"><li><a href="/r/sweet-pea-s-baking-company/"><span class="dot d-priority"></span>Sweet Pea&#x27;s Baking Company</a></li><li><a href="/r/patriots-store-llc/"><span class="dot d-minor"></span>Patriots Store LLC</a></li><li><a href="/r/constantino-s-pasta-bowls/"><span class="dot d-priority"></span>Constantino&#x27;s Pasta Bowls</a></li><li><a href="/r/sushi-soba/"><span class="dot d-priority"></span>Sushi Soba</a></li><li><a href="/r/polpo-restaurant/"><span class="dot d-unverified"></span>Polpo Restaurant</a></li><li><a href="/r/mcdonald-s-greenwich-748/"><span class="dot d-minor"></span>McDonald&#x27;s - Greenwich 748</a></li></ul></section>
 </main>
 <footer class="wrap">
  <p><strong>Source.</strong> Inspection reports obtained from the Town of Greenwich Department of
