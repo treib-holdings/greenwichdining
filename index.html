@@ -100,6 +100,36 @@ h1,h2,h3{font-family:"Zilla Slab",Georgia,serif;text-wrap:balance;margin:0}
 .share button:focus-visible,.share .permalink:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 .share .permalink{font-family:"IBM Plex Mono",monospace;font-size:.76rem;color:var(--ink-3);text-decoration:none}
 .share .permalink:hover{color:var(--accent);text-decoration:underline}
+.front{padding:6px 2px}
+.front h2{font-family:"Zilla Slab",Georgia,serif;font-size:1.6rem;line-height:1.2;margin:0 0 10px;
+ text-wrap:balance;max-width:27ch}
+.front .lede{color:var(--ink-2);margin:0 0 26px;max-width:56ch}
+.bgroup{margin-bottom:20px}
+.bgroup h3{font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);
+ margin:0 0 9px;font-weight:600}
+.bchips{display:flex;flex-wrap:wrap;gap:7px}
+.bchip{font:inherit;font-size:.86rem;display:inline-flex;align-items:center;gap:7px;
+ padding:7px 13px;border:1px solid var(--line);border-radius:20px;background:var(--surface);
+ color:var(--ink);cursor:pointer}
+.bchip span{font-family:"IBM Plex Mono",monospace;font-size:.72rem;color:var(--ink-3)}
+.bchip:hover{border-color:var(--accent);color:var(--accent)}
+.bchip:hover span{color:var(--accent)}
+.bchip:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.blinks{display:flex;flex-wrap:wrap;gap:7px 18px}
+.blinks a{font-size:.88rem;font-weight:600;color:var(--accent);text-decoration:none}
+.blinks a:hover{text-decoration:underline}
+.front .fnote{margin-top:26px;padding-top:14px;border-top:1px solid var(--line);
+ font-size:.82rem;color:var(--ink-3);max-width:62ch}
+.seeall{float:right;font-weight:600;color:var(--accent);text-decoration:none;text-transform:none;letter-spacing:0}
+.seeall:hover{text-decoration:underline}
+a.lc{display:block;text-decoration:none;color:inherit}
+a.lc:hover{border-color:var(--accent)}
+a.lc .peek{font-size:.84rem;color:var(--ink-3);margin:10px 0 0}
+a.lc .go{display:inline-block;margin-top:12px;font-size:.84rem;font-weight:600;color:var(--accent)}
+a.lc:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.fnav{display:flex;flex-wrap:wrap;gap:6px 20px;margin-bottom:16px}
+.fnav a{color:var(--accent);text-decoration:none;font-size:.86rem;font-weight:600}
+.fnav a:hover{text-decoration:underline}
 .pending{margin-top:9px;font-size:.84rem;color:var(--pend);background:var(--pend-bg);border-radius:5px;padding:7px 11px}
 .pending.note{color:var(--ink-3);background:transparent;border-left:2px solid var(--rule);border-radius:0;padding:2px 0 2px 11px}
 .pending .vn{display:block;margin-top:3px;opacity:.85}
@@ -193,6 +223,16 @@ footer strong{color:var(--ink-2)}
  </section>
 
  <footer>
+  <nav class="fnav">
+   <a href="/all/">All 410 establishments A&ndash;Z</a>
+   <a href="/lists/most-priority-violations/">Most priority violations</a>
+   <a href="/lists/cleanest-records/">Cleanest records</a>
+   <a href="/lists/most-improved/">Most improved</a>
+   <a href="/lists/declining-records/">Declining records</a>
+   <a href="/contact/">Contact</a>
+   <a href="/corrections/">Corrections</a>
+   <a href="/sponsorship/">Sponsorship</a>
+  </nav>
   <p><strong>Source.</strong> Inspection reports and the licensed-establishment list obtained from the Town of Greenwich
   Department of Health under the Connecticut Freedom of Information Act (Conn. Gen. Stat. §§ 1-200 et seq.).
   Inspections are recorded on Connecticut DPH form EHS-108 and cover <span id="fSpan">the record period</span>.</p>
@@ -248,9 +288,60 @@ footer strong{color:var(--ink-2)}
   if($('fStat').value&&e.ind!==$('fStat').value)return false;
   return true;
  }
+ function idle(){
+  return !$('q').value.trim() && !$('fCat').value && !$('fCity').value && !$('fStat').value
+   && $('fStatus').value==='open';
+ }
+ var HOODS=['Greenwich','Cos Cob','Riverside','Old Greenwich'];
+ var STREETS=['East Putnam Avenue','Greenwich Avenue','West Putnam Avenue','Sound Beach Avenue','King Street'];
+ function countIn(f,v){var n=0;for(var i=0;i<EST.length;i++){if(EST[i].status==='open'&&EST[i][f]===v)n++;}return n;}
+ function countStreet(v){var q=v.toLowerCase(),n=0;
+  for(var i=0;i<EST.length;i++){var e=EST[i];
+   if(e.status==='open'&&e.addr&&e.addr.toLowerCase().indexOf(q)>=0)n++;}return n;}
+ function frontDoor(){
+  var hood=HOODS.map(function(h){var n=countIn('city',h);return n?'<button class="bchip" data-f="fCity" data-v="'+esc(h)+'">'+esc(h)+'<span>'+n+'</span></button>':'';}).join('');
+  var street=STREETS.map(function(t){var n=countStreet(t);return n?'<button class="bchip" data-f="q" data-v="'+esc(t)+'">'+esc(t)+'<span>'+n+'</span></button>':'';}).join('');
+  var cats={},order=[];
+  for(var i=0;i<EST.length;i++){var e=EST[i];if(e.status!=='open'||!e.cat)continue;
+   if(!cats[e.cat]){cats[e.cat]=0;order.push(e.cat);}cats[e.cat]++;}
+  order.sort(function(a,b){return cats[b]-cats[a];});
+  var cat=order.slice(0,7).map(function(c){return '<button class="bchip" data-f="fCat" data-v="'+esc(c)+'">'+esc(c)+'<span>'+cats[c]+'</span></button>';}).join('');
+  return '<div class="front">'
+   +'<h2>Every health inspection, for every place that serves food in Greenwich.</h2>'
+   +'<p class="lede">Search above for a restaurant, a market, a school kitchen or a street. '
+   +'Each record shows what the inspector marked on the form, what still had to be fixed, and when.</p>'
+   +'<div class="bgroup"><h3>By neighbourhood</h3><div class="bchips">'+hood+'</div></div>'
+   +'<div class="bgroup"><h3>By street</h3><div class="bchips">'+street+'</div></div>'
+   +'<div class="bgroup"><h3>By kind of place</h3><div class="bchips">'+cat+'</div></div>'
+   +'<div class="bgroup"><h3>Lists</h3><div class="blinks">'
+   +'<a href="/lists/most-priority-violations/">Most priority violations</a>'
+   +'<a href="/lists/cleanest-records/">Cleanest records</a>'
+   +'<a href="/lists/most-improved/">Most improved</a>'
+   +'<a href="/lists/declining-records/">Declining records</a>'
+   +'<a href="/all/">All '+EST.length+' establishments A&ndash;Z</a></div></div>'
+   +'<p class="fnote">These are public records obtained under the Connecticut Freedom of Information '
+   +'Act, not an official rating and not a health department grade.</p></div>';
+ }
+ function wireFront(){
+  var n=$('detail').querySelectorAll('.bchip');
+  for(var i=0;i<n.length;i++){n[i].addEventListener('click',function(){
+   var f=this.dataset.f,v=this.dataset.v;
+   if(f==='q'){$('q').value=v;}else{$(f).value=v;}
+   renderList();$('q').focus();
+  });}
+ }
  function renderList(){
   shown=EST.filter(matches);
-  $('count').textContent=shown.length+(shown.length===1?' establishment':' establishments');
+  // Idle, show the most recently inspected rather than the alphabet. A default A-Z list makes
+  // exposure an accident of spelling, and permanently parks the same few names at the top.
+  var browsing=idle();
+  if(browsing){
+   shown=shown.filter(function(e){return e.ins.length;})
+    .sort(function(a,b){return a.ins[0].date<b.ins[0].date?1:-1;}).slice(0,25);
+   $('count').innerHTML='Recently inspected <a class="seeall" href="/all/">see all '+EST.length+' &rarr;</a>';
+  } else {
+   $('count').textContent=shown.length+(shown.length===1?' establishment':' establishments');
+  }
   $('list').innerHTML=shown.map(function(e,i){
    var last=e.ins.length?fmt(e.ins[0].date):'No record';
    var sub=e.addr?esc(e.addr):'<em>Not on the current licensed list</em>';
@@ -262,7 +353,7 @@ footer strong{color:var(--ink-2)}
  }
  function renderDetail(e,noPush){
   current=e;
-  if(!e){$('detail').innerHTML='<div class="empty">Select an establishment to see its inspection record.</div>';return;}
+  if(!e){$('detail').innerHTML=frontDoor();wireFront();return;}
   var bits='<span>'+(e.addr?esc(e.addr)+(e.city?', '+esc(e.city):''):'Address not in the town\'s current licensed list')+'</span>'
    +'<span>'+esc(e.cat)+'</span>'+(e.cls?'<span>Risk class '+['I','II','III','IV'][e.cls-1]+'</span>':'')
    +'<span class="mono">License '+esc(e.lic)+'</span>';
@@ -305,14 +396,24 @@ footer strong{color:var(--ink-2)}
   ['naughty','bad','Naughty List','Most priority violations recorded — the ones tied most directly to foodborne illness.',function(e){return e.vp+' priority';}],
   ['improving','up','Improving','Recent inspections measurably cleaner than their earlier ones.',function(e){return e.trend;}],
   ['declining','down','Declining','Recent inspections measurably worse than their earlier ones.',function(e){return '+'+e.trend;}]];
+ var HUB=[
+  ['naughty','bad','Most priority violations','most-priority-violations',
+   'Open establishments with the highest rate of priority violations — the ones tied most directly to foodborne illness.'],
+  ['nice','good','Cleanest records','cleanest-records',
+   'Open establishments with no violations at all across their last several inspections.'],
+  ['improving','up','Most improved','most-improved',
+   'Recent inspections measurably cleaner than their earlier ones.'],
+  ['declining','down','Declining records','declining-records',
+   'Recent inspections measurably worse than their earlier ones.']];
  function renderLists(){
-  $('lists').innerHTML=SPEC.map(function(s){
-   var rows=(LISTS[s[0]]||[]).slice(0,12).map(function(k,i){
-    var e=find(k); if(!e)return '';
-    return '<button class="rank" data-k="'+esc(k)+'"><span class="i">'+(i+1)+'</span>'
-      +'<span class="n2">'+esc(e.name)+'</span><span class="m">'+s[4](e)+'</span></button>';}).join('');
-   return '<section class="lc '+s[1]+'"><header><h3>'+s[2]+'</h3><p class="crit">'+s[3]+'</p></header>'
-     +(rows||'<div class="empty">No establishments meet these criteria.</div>')+'</section>';}).join('');
+  $('lists').innerHTML=HUB.map(function(s){
+   var n=(LISTS[s[0]]||[]).length;
+   var top=(LISTS[s[0]]||[]).slice(0,3).map(function(k){var e=find(k);return e?esc(e.name):'';})
+     .filter(Boolean).join(' · ');
+   return '<a class="lc '+s[1]+'" href="/lists/'+s[3]+'/">'
+     +'<h3>'+s[2]+'</h3><p class="crit">'+s[4]+'</p>'
+     +'<p class="peek">'+top+(n>3?' and '+(n-3)+' more':'')+'</p>'
+     +'<span class="go">Open the list &rarr;</span></a>';}).join('');
  }
  function show(v){
   $('viewDir').hidden=(v!=='dir'); $('viewLists').hidden=(v!=='lists');
@@ -354,7 +455,8 @@ footer strong{color:var(--ink-2)}
  });
  ['q','fCat','fCity','fStatus','fStat'].forEach(function(id){$(id).addEventListener('input',renderList);});
 
- var pool=EST.filter(function(e){var t=e.tp+e.tpf+e.tc;return e.status==='open'&&e.n>=4&&t>=3&&t<=8&&e.ind!=='unverified';});
- renderDetail(pool[Math.floor(pool.length/2)]||EST[0],true); renderLists(); renderList();
+ // Open on the front door, never on a specific establishment: singling one out gives that
+ // business impressions it did nothing to earn.
+ renderDetail(null,true); renderLists(); renderList();
 })();
 </script>
