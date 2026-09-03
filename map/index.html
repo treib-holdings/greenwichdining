@@ -156,6 +156,10 @@ a.lc:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 .legend h3{font-size:1rem;margin-bottom:9px}
 .legend dl{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:9px 26px;margin:0}
 .legend dt{font-weight:600;font-size:.86rem}.legend dd{margin:0 0 4px;font-size:.86rem;color:var(--ink-2)}
+.legend .keyintro{font-size:.86rem;color:var(--ink-2);margin:0 0 10px}
+.legend .colourkey{margin-bottom:14px;padding-bottom:12px;border-bottom:1px solid var(--line)}
+.legend .colourkey dt{display:flex;align-items:center;gap:7px}
+.legend .colourkey .stripe{display:inline-block;width:10px;height:10px;border-radius:50%;position:static}
 footer{margin-top:22px;font-size:.82rem;color:var(--ink-3);max-width:74ch}
 footer strong{color:var(--ink-2)}
 .empty{padding:36px 22px;color:var(--ink-3)}
@@ -244,6 +248,14 @@ footer strong{color:var(--ink-2)}
 
  <section class="legend">
   <h3>How to read these records</h3>
+  <p class="keyintro">The colour beside each name is what the <strong>most recent</strong> inspection found, nothing more.
+   It says nothing about the history; open the record for that.</p>
+  <dl class="colourkey">
+   <dt><i class="stripe s-clean"></i>Green</dt><dd>No violations were recorded at the most recent inspection.</dd>
+   <dt><i class="stripe s-minor"></i>Amber</dt><dd>Only non-priority violations (Priority Foundation or Core) were recorded.</dd>
+   <dt><i class="stripe s-priority"></i>Red</dt><dd>At least one priority violation was recorded.</dd>
+   <dt><i class="stripe s-unverified"></i>Grey</dt><dd>The most recent form could not be read with confidence, or no inspection is on file.</dd>
+  </dl>
   <dl>
    <dt>Priority (P)</dt><dd>Violations most directly linked to foodborne illness — temperature control, contamination, employee illness.</dd>
    <dt>Priority Foundation (Pf)</dt><dd>Missing procedures, records, training or equipment that support a priority item.</dd>
