@@ -189,7 +189,13 @@ footer a{color:var(--accent)}
  <h2>Get in touch</h2>
  <p>Write to <a href="mailto:hello@greenwichdining.com">hello@greenwichdining.com</a>. Please include the establishment name and the
  inspection date, and quote the line you're disputing if you can.</p>
- 
+ <form class="cform" action="https://formspree.io/f/xppzrnde" method="POST">
+ <input type="hidden" name="_subject" value="Correction — Greenwich Dining Record">
+ <label>Your message<textarea name="message" rows="7" required placeholder="Establishment name, inspection date, and what is wrong."></textarea></label>
+ <label>Email, only if you want a reply <span class="opt">optional</span>
+  <input type="email" name="email" placeholder="you@example.com"></label>
+ <button type="submit">Send</button>
+</form>
 </section>
 </main>
 <footer class="wrap">
