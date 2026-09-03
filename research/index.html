@@ -1,0 +1,303 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Does publishing inspection records improve food safety? — Greenwich Dining Record</title>
+<meta name="description" content="What the research on public restaurant-inspection disclosure says, and what it doesn&#x27;t. New York City, Los Angeles, and what any of it means for Greenwich.">
+<link rel="canonical" href="https://greenwichdining.com/research/">
+<meta name="theme-color" content="#F7F8F7" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0E1618" media="(prefers-color-scheme: dark)">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Greenwich Dining Record">
+<meta property="og:title" content="Does publishing inspection records improve food safety?">
+<meta property="og:description" content="What the research on public restaurant-inspection disclosure says, and what it doesn&#x27;t. New York City, Los Angeles, and what any of it means for Greenwich.">
+<meta property="og:url" content="https://greenwichdining.com/research/">
+<meta property="og:image" content="https://greenwichdining.com/og-card.png">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Does publishing inspection records improve food safety?">
+<meta name="twitter:description" content="What the research on public restaurant-inspection disclosure says, and what it doesn&#x27;t. New York City, Los Angeles, and what any of it means for Greenwich.">
+<meta name="twitter:image" content="https://greenwichdining.com/og-card.png">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>&#127869;</text></svg>">
+<!-- Privacy-friendly analytics by Plausible -->
+<script async src="https://plausible.io/js/pa-JbdkJKWa6VnMHvhz9eVee.js"></script>
+<script>
+  window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
+  plausible.init()
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@500;600;700&family=Source+Sans+3:wght@400;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{--ground:#F7F8F7;--surface:#FFF;--soft:#EFF2F1;--rule:#D9E0DE;--line:#E7ECEA;
+ --ink:#14201F;--ink-2:#485654;--ink-3:#6C7A78;--accent:#0F4C5C;--accent-soft:#E2EDF0;
+ --clean:#2E7D53;--clean-bg:#E4F1E9;--minor:#9A6510;--minor-bg:#F6EDDF;
+ --prio:#A9382F;--prio-bg:#F7E6E4;--pend:#5C6B75;--pend-bg:#E9EDEF}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+ --ground:#0E1618;--surface:#152023;--soft:#1B282B;--rule:#2A3A3E;--line:#223034;
+ --ink:#E8EDEC;--ink-2:#B6C4C2;--ink-3:#93A2A0;--accent:#6FBFD2;--accent-soft:#173239;
+ --clean:#6FCF97;--clean-bg:#14301F;--minor:#E0B166;--minor-bg:#32270F;
+ --prio:#E98A80;--prio-bg:#3A1B18;--pend:#9FB0B8;--pend-bg:#1E282C}}
+:root[data-theme="dark"]{
+ --ground:#0E1618;--surface:#152023;--soft:#1B282B;--rule:#2A3A3E;--line:#223034;
+ --ink:#E8EDEC;--ink-2:#B6C4C2;--ink-3:#93A2A0;--accent:#6FBFD2;--accent-soft:#173239;
+ --clean:#6FCF97;--clean-bg:#14301F;--minor:#E0B166;--minor-bg:#32270F;
+ --prio:#E98A80;--prio-bg:#3A1B18;--pend:#9FB0B8;--pend-bg:#1E282C}
+*{box-sizing:border-box}
+body{margin:0;background:var(--ground);color:var(--ink);
+ font-family:"Source Sans 3",system-ui,-apple-system,sans-serif;line-height:1.5}
+.wrap{max-width:820px;margin:0 auto;padding:0 20px 64px}
+header{border-bottom:2px solid var(--accent);margin-bottom:26px}
+header .wrap{padding-bottom:0}
+.bar{display:flex;align-items:baseline;justify-content:space-between;gap:16px;padding:20px 0 14px;flex-wrap:wrap}
+.mark{font-family:"Zilla Slab",Georgia,serif;font-weight:700;font-size:1.3rem;color:var(--ink);text-decoration:none}
+.mark span{color:var(--accent)}
+.back{font-size:.86rem;color:var(--accent);text-decoration:none}
+.back:hover{text-decoration:underline}
+h1{font-family:"Zilla Slab",Georgia,serif;font-size:2rem;margin:0 0 6px;text-wrap:balance;line-height:1.15}
+.sub{color:var(--ink-3);font-size:.94rem;margin:0 0 14px}
+.sub .lic{font-family:"IBM Plex Mono",monospace;font-size:.8rem}
+.badge{display:inline-block;font-size:.8rem;font-weight:600;padding:4px 11px;border-radius:20px}
+.b-clean{color:var(--clean);background:var(--clean-bg)}.b-minor{color:var(--minor);background:var(--minor-bg)}
+.b-priority{color:var(--prio);background:var(--prio-bg)}.b-unverified,.b-none{color:var(--pend);background:var(--pend-bg)}
+.blurb{margin:11px 0 0;color:var(--ink-2)}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(96px,1fr));gap:1px;
+ background:var(--rule);border:1px solid var(--rule);border-radius:8px;overflow:hidden;margin:22px 0 30px}
+.stat{background:var(--surface);padding:12px 14px}
+.stat b{display:block;font-family:"Zilla Slab",Georgia,serif;font-size:1.42rem;font-variant-numeric:tabular-nums}
+.stat span{font-size:.7rem;letter-spacing:.05em;color:var(--ink-3);text-transform:uppercase}
+.insp{border-top:1px solid var(--line);padding-top:18px;margin-top:22px}
+.ihead{display:flex;align-items:center;gap:11px;flex-wrap:wrap;margin-bottom:11px}
+.idate{font-family:"IBM Plex Mono",monospace;font-weight:500;font-size:1rem}
+.itype{font-size:.74rem;letter-spacing:.05em;color:var(--ink-3);text-transform:uppercase}
+.icount{font-size:.78rem;font-weight:600;padding:3px 9px;border-radius:12px}
+.v{display:flex;gap:11px;align-items:flex-start;background:var(--soft);border-left:3px solid var(--rule);
+ border-radius:0 5px 5px 0;padding:9px 12px;margin-bottom:5px}
+.v.P{border-left-color:var(--prio)}.v.Pf{border-left-color:var(--minor)}.v.C{border-left-color:var(--pend)}
+.vn{font-family:"IBM Plex Mono",monospace;font-size:.76rem;color:var(--ink-3);padding-top:2px;min-width:22px}
+.vt{flex:1;font-size:.93rem}
+.chip{font-size:.66rem;font-weight:600;padding:2px 7px;border-radius:10px;white-space:nowrap;margin-left:6px}
+.tag{font-size:.65rem;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-3);
+ border:1px solid var(--rule);border-radius:9px;padding:1px 6px;margin-left:6px;white-space:nowrap}
+.due{font-size:.82rem;color:var(--ink-3);margin:8px 0 0}
+.note{font-size:.84rem;color:var(--ink-3);border-left:2px solid var(--rule);padding:3px 0 3px 11px;margin:9px 0 0}
+.note.warn{color:var(--pend);background:var(--pend-bg);border:0;border-radius:5px;padding:8px 11px}
+.rmap{height:240px;border:1px solid var(--line);border-radius:9px;margin:18px 0 6px;background:var(--soft)}
+.maplink{font-size:.84rem;margin:0 0 6px}
+.pdf{font-size:.8rem;color:var(--ink-3);text-decoration:none;border-bottom:1px dotted var(--rule)}
+.pdf:hover{color:var(--accent)}
+.share{display:flex;gap:9px;flex-wrap:wrap;margin:24px 0 0}
+.share button,.share a{font:inherit;font-size:.85rem;font-weight:600;padding:8px 15px;border-radius:7px;
+ border:1px solid var(--rule);background:var(--surface);color:var(--ink);cursor:pointer;text-decoration:none}
+.share button:hover,.share a:hover{border-color:var(--accent);color:var(--accent)}
+.share button:focus-visible,.share a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+footer{margin-top:44px;padding-top:18px;border-top:1px solid var(--line);font-size:.82rem;color:var(--ink-3)}
+footer a{color:var(--accent)}
+.fnav2{display:flex;flex-wrap:wrap;gap:6px 18px;margin-bottom:12px}
+.fnav2 a{font-weight:600;text-decoration:none}
+.fnav2 a:hover{text-decoration:underline}
+.related{margin-top:38px;border-top:1px solid var(--line);padding-top:6px}
+.related h2{font-family:"Zilla Slab",Georgia,serif;font-size:1.02rem;margin:20px 0 9px}
+.rel{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:2px}
+.rel a{display:flex;align-items:center;gap:9px;padding:7px 9px;border-radius:6px;
+ text-decoration:none;color:var(--ink);font-size:.9rem}
+.rel a:hover{background:var(--soft);color:var(--accent)}
+.dot{width:7px;height:7px;border-radius:50%;flex:none}
+.d-clean{background:var(--clean)}.d-minor{background:var(--minor)}
+.d-priority{background:var(--prio)}.d-unverified,.d-none{background:var(--pend)}
+@media(max-width:560px){h1{font-size:1.6rem}}
+
+.az{columns:3 230px;column-gap:26px}
+.az a{display:flex;align-items:center;gap:8px;padding:4px 0;text-decoration:none;color:var(--ink);
+ font-size:.92rem;break-inside:avoid}
+.az a:hover{color:var(--accent)}
+.azh{font-family:"Zilla Slab",Georgia,serif;font-size:1.1rem;color:var(--accent);
+ margin:16px 0 4px;break-after:avoid}
+.rank{list-style:none;margin:0;padding:0;counter-reset:r}
+.rank li{counter-increment:r;display:flex;align-items:center;gap:12px;padding:11px 4px;
+ border-bottom:1px solid var(--line)}
+.rank li::before{content:counter(r);font-family:"IBM Plex Mono",monospace;font-size:.8rem;
+ color:var(--ink-3);min-width:20px}
+.rank a{flex:1;text-decoration:none;color:var(--ink);font-weight:600}
+.rank a:hover{color:var(--accent)}
+.rank .m{font-family:"IBM Plex Mono",monospace;font-size:.8rem;color:var(--ink-3)}
+.rank .ad{display:block;font-weight:400;font-size:.82rem;color:var(--ink-3)}
+.doc{max-width:64ch}
+.doc h2{font-family:"Zilla Slab",Georgia,serif;font-size:1.16rem;margin:30px 0 8px}
+.doc p,.doc li{color:var(--ink-2)}
+.doc .lede{font-size:1.04rem;color:var(--ink)}
+.doc sup a{text-decoration:none;color:var(--accent);font-weight:600}
+.sources li{font-size:.88rem;color:var(--ink-2);margin-bottom:8px}
+.callout{background:var(--soft);border-left:3px solid var(--accent);border-radius:0 7px 7px 0;
+ padding:16px 20px;margin:4px 0 8px}
+.callout h2{margin-top:0;font-size:1.08rem}
+.callout.strong{border-left-color:var(--prio)}
+.steps{padding-left:20px} .steps li{margin-bottom:7px}
+.plain{list-style:none;padding:0}
+.plain li{padding:7px 0 7px 20px;position:relative;border-bottom:1px solid var(--line)}
+.plain li::before{content:"";position:absolute;left:0;top:15px;width:7px;height:2px;background:var(--accent)}
+.cform{display:grid;gap:12px;margin:14px 0 4px;max-width:46ch}
+.cform label{display:grid;gap:5px;font-size:.86rem;font-weight:600;color:var(--ink)}
+.cform .opt{font-weight:400;color:var(--ink-3)}
+.cform textarea,.cform input{font:inherit;padding:9px 11px;border:1px solid var(--rule);
+ border-radius:7px;background:var(--surface);color:var(--ink);width:100%}
+.cform button{font:inherit;font-weight:600;padding:9px 18px;border:0;border-radius:7px;
+ background:var(--accent);color:var(--ground);cursor:pointer;justify-self:start}
+</style>
+</head>
+<body>
+<header><div class="wrap"><div class="bar">
+ <a class="mark" href="/">Greenwich <span>Dining Record</span></a>
+ <a class="back" href="/">← Search all establishments</a>
+</div></div></header>
+<main class="wrap">
+ <h1>Does publishing inspection records improve food safety?</h1>
+ <p class="blurb">What the research says, and what it doesn't.</p>
+ 
+<section class="doc">
+ <p class="lede">Greenwich Dining Record was built on a simple premise: public restaurant inspection
+ records are more useful when the public can actually find, understand and compare them. That raises
+ a harder question. Does making inspection information more visible accomplish anything?</p>
+
+ <p>A number of cities and counties have tried public disclosure, from searchable inspection databases
+ to letter grades posted at the door. Researchers have studied several of these programs, above all in
+ New York City and Los Angeles County. The evidence on restaurant compliance and consumer behavior is
+ encouraging. The evidence that disclosure directly reduces foodborne illness is more complicated.</p>
+
+ <h2>Restaurants appear to respond to disclosure</h2>
+ <p>The largest study looked at New York City's letter-grade program, introduced in July 2010.
+ Researchers at the city's health department analyzed inspections of 43,448 restaurants between 2007
+ and 2013. Three years into the program, restaurants were 35% more likely to score in the A range than
+ they had been three years before it. The share receiving an A-range score on an initial inspection
+ rose from roughly 31% when grading began to 46% in 2013, and specific practices improved too, such
+ as having a certified kitchen manager present and keeping pests out. Restaurants sent for
+ reinspection became more likely to have fixed the problem before the inspector returned.<sup><a
+ href="#s1">1</a></sup></p>
+ <p>One caveat matters. New York did not simply publish information that had been hidden. The same
+ program changed inspection frequency, fines and training, so the researchers could not separate the
+ effect of diners seeing grades from the rest of the enforcement package. Still, the results fit a
+ straightforward idea: when inspection performance is visible to customers, a restaurant has one more
+ reason to improve it.</p>
+
+ <h2>Diners appear to use the information</h2>
+ <p>Disclosure only creates that incentive if diners care. In New York they apparently did. In the
+ health department's telephone surveys, more than 91% of adults approved of grading, 88% of those who
+ had seen a grade said they considered it when deciding where to eat, and about three-quarters said
+ an A made them more confident in a restaurant's food safety.<sup><a href="#s1">1</a></sup>
+ Disclosure turns an inspection from a transaction between a restaurant and a regulator into
+ information that reaches the restaurant's customers.</p>
+
+ <h2>Good results have economic value</h2>
+ <p>Diners' reactions are large enough to show up in restaurant finances. A separate study of New York
+ City restaurants under the grading policy found that, after controlling for underlying compliance,
+ restaurants receiving A grades had higher revenues and were less likely to close than restaurants
+ receiving B grades, while C grades brought lower revenues and a higher probability of closure. The
+ same study found the policy's average effect on revenue across the city as a whole was roughly
+ neutral: grades moved money between restaurants more than they changed the total.<sup><a
+ href="#s2">2</a></sup></p>
+ <p>This point is easy to overlook. Public inspection information does not only single out restaurants
+ with problems. It rewards the ones that consistently keep high standards, businesses that spend on
+ training, refrigeration, cleaning, pest control and food handling that customers cannot otherwise
+ see. Visible inspection performance gives diners a way to recognize that work.</p>
+
+ <h2>Does disclosure keep people from getting sick?</h2>
+ <p>Here the evidence is less certain. A study comparing New York City with the rest of the state found
+ that after letter grades were introduced, reported <em>Salmonella</em> infections in the city fell
+ about 5.3% a year relative to the rest of New York over 2011 to 2015. The authors concluded that
+ posting results at the point of service was associated with the decline.<sup><a
+ href="#s3">3</a></sup> A 2024 survey of 140 local health agencies found that those which graded
+ inspections and routinely disclosed the results reported fewer restaurant-associated outbreaks than
+ those which did not.<sup><a href="#s4">4</a></sup></p>
+ <p>But association is not causation, and a dispute over Los Angeles shows why caution is warranted.
+ Early research on Los Angeles County's grade cards reported a substantial drop in foodborne-illness
+ hospitalizations after the cards appeared.<sup><a href="#s5">5</a></sup> A 2019 reexamination in the
+ <em>American Economic Journal: Economic Policy</em>, using more hospital data and newly collected
+ records of reportable illnesses, found that the result did not hold up. Among other problems, the
+ largest <em>Salmonella</em> outbreak in California's history had hit the region shortly before grading
+ began, and illness fell just as much in neighboring counties that never introduced grade
+ cards.<sup><a href="#s6">6</a></sup> The original authors published a reply maintaining their
+ finding.<sup><a href="#s7">7</a></sup></p>
+ <p>So it would be too strong to say that publishing inspection results has been proven to reduce
+ foodborne illness. The accurate statement is that some studies have found declines in illness
+ associated with disclosure programs, and that a direct causal link remains hard to establish.</p>
+
+ <h2>What this means for Greenwich</h2>
+ <p>There is a further limit on reading this research locally. Greenwich Dining Record is not New York
+ City's grading program. It conducts no inspections, assigns no grades, imposes no fines and decides
+ nothing about whether an establishment passes. The findings come from the Town of Greenwich
+ Department of Health. Our role is narrower: organizing those public records so residents can see an
+ establishment's history, the violations, the follow-up inspections, and how things changed over
+ time. Results observed under a mandatory letter-grade regime will not automatically appear here.</p>
+ <p>There is good reason, though, to think visibility itself matters. Before New York's letter grades,
+ inspection scores were already published on the city's website, and researchers noted that merely
+ making records technically available had not produced much change. The later program put easily
+ understood information in front of diners.<sup><a href="#s1">1</a></sup> That distinction is the
+ idea behind this site. A public record is not useful because someone could, in principle, request it
+ or find it on a government website. It becomes useful when people can understand it.</p>
+
+ <h2>The risks of simplifying</h2>
+ <p>More disclosure is not automatically better disclosure. An inspection captures one moment. A
+ violation can be corrected, management can change, equipment can fail and be replaced. A restaurant
+ with a poor inspection several years ago may run very differently today. Conversely, a restaurant
+ that keeps receiving the same significant violation shows a pattern that is hard to see one report at
+ a time. Anyone presenting this information owes readers that context.</p>
+ <p>That is one reason this site emphasizes inspection history rather than inventing its own grades.
+ A restaurant that has improved should be able to show it in its record. One with consistently clean
+ inspections should get credit for the consistency. And one with repeated violations should have
+ those records presented accurately, without exaggerating what the underlying forms say.</p>
+
+ <h2>What the evidence reasonably supports</h2>
+ <ul class="plain">
+  <li>Publicizing inspection performance appears to influence where people eat.</li>
+  <li>Restaurants appear to respond to that visibility by improving compliance.</li>
+  <li>Strong inspection performance has economic value, so transparency rewards good operators as
+   well as pressing poor ones to improve.</li>
+  <li>Some evidence links disclosure to less foodborne illness, but not strongly enough to claim that
+   disclosure alone causes the reduction.</li>
+  <li>Accessibility matters. Records that are technically public but practically invisible change
+   little.</li>
+ </ul>
+ <p>Greenwich already inspects its food establishments, and those inspections already produce public
+ records. This site does not change what inspectors find. It changes how easily the rest of us can
+ see it. If that encourages problems to be fixed, rewards the places that consistently do well, and
+ helps residents decide where to eat, that is a meaningful result in itself.</p>
+
+ <h2>Sources</h2>
+ <ol class="steps sources">
+  <li id="s1">Wong MR, McKelvey W, Ito K, Schiff C, Jacobson JB, Kass D. Impact of a letter-grade
+   program on restaurant sanitary conditions and diner behavior in New York City.
+   <em>American Journal of Public Health</em>. 2015;105(3):e81–e87.
+   <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC4330857/" rel="noopener">PMC4330857</a>.</li>
+  <li id="s2">Rothbart MW, Schwartz AE, Calabrese TD, Papper Z, Mijanovich T, Meltzer R, Silver D.
+   What a difference a grade makes: evidence from New York City's restaurant grading policy.
+   <em>Public Administration Review</em>. 2019.
+   <a href="https://onlinelibrary.wiley.com/doi/abs/10.1111/puar.13091" rel="noopener">doi:10.1111/puar.13091</a>.</li>
+  <li id="s3">Firestone MJ, Hedberg CW. Restaurant inspection letter grades and <em>Salmonella</em>
+   infections, New York, New York, USA. <em>Emerging Infectious Diseases</em>. 2018;24(12):2164–2168.
+   <a href="https://wwwnc.cdc.gov/eid/article/24/12/18-0544_article" rel="noopener">CDC</a>.</li>
+  <li id="s4">Kim TN, Edmundson AR, Hedberg CW. Foodborne illness complaint systems detect, and
+   restaurant inspection programs prevent restaurant-associated foodborne illness outbreaks.
+   <em>Foodborne Pathogens and Disease</em>. 2024.
+   <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10877379/" rel="noopener">PMC10877379</a>.</li>
+  <li id="s5">Simon PA, Leslie P, Run G, et al. Impact of restaurant hygiene grade cards on
+   foodborne-disease hospitalizations in Los Angeles County. <em>Journal of Environmental Health</em>.
+   2005;67(7):32–36. <a href="https://pubmed.ncbi.nlm.nih.gov/15794461/" rel="noopener">PubMed</a>.</li>
+  <li id="s6">Ho DE, Ashwood ZC, Handan-Nader C. New evidence on information disclosure through
+   restaurant hygiene grading. <em>American Economic Journal: Economic Policy</em>. 2019;11(4).
+   <a href="https://www.aeaweb.org/articles?id=10.1257/pol.20180230" rel="noopener">doi:10.1257/pol.20180230</a>.</li>
+  <li id="s7">Jin GZ, Leslie P. New evidence on information disclosure through restaurant hygiene
+   grading: reply. <em>American Economic Journal: Economic Policy</em>. 2019;11(4).
+   <a href="https://www.aeaweb.org/articles?id=10.1257/pol.20180543" rel="noopener">doi:10.1257/pol.20180543</a>.</li>
+ </ol>
+</section>
+</main>
+<footer class="wrap">
+ <nav class="fnav2"><a href="/all/">All establishments</a><a href="/map/">Map</a><a href="/research/">Does publishing this help?</a><a href="/contact/">Contact</a><a href="/corrections/">Corrections</a><a href="/sponsorship/">Sponsorship</a></nav>
+ <p><strong>Source.</strong> Inspection reports obtained from the Town of Greenwich Department of
+ Health under the Connecticut Freedom of Information Act, recorded on Connecticut DPH form EHS-108.</p>
+ <p><strong>Please read.</strong> This is a reproduction of public records, not an official rating
+ and not a health department grade. An inspection describes one moment in time.</p>
+</footer>
+</body>
+</html>

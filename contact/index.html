@@ -127,6 +127,8 @@ footer a{color:var(--accent)}
 .doc h2{font-family:"Zilla Slab",Georgia,serif;font-size:1.16rem;margin:30px 0 8px}
 .doc p,.doc li{color:var(--ink-2)}
 .doc .lede{font-size:1.04rem;color:var(--ink)}
+.doc sup a{text-decoration:none;color:var(--accent);font-weight:600}
+.sources li{font-size:.88rem;color:var(--ink-2);margin-bottom:8px}
 .callout{background:var(--soft);border-left:3px solid var(--accent);border-radius:0 7px 7px 0;
  padding:16px 20px;margin:4px 0 8px}
 .callout h2{margin-top:0;font-size:1.08rem}
@@ -172,14 +174,37 @@ footer a{color:var(--accent)}
  <a href="/corrections/">corrections page</a> explains exactly what happens next.</p>
  
 
+ <h2 id="request">Requesting a copy of an inspection form</h2>
+ <p>Every record here was read from a scanned inspection form. We don't post the scans themselves,
+ because the forms carry the names and phone numbers of the people who were on the premises, and
+ sometimes an inspector's handwritten notes. We will send you a copy of any form on request, with
+ personal details covered. Ask from the record page (each inspection has a link), or write to
+ <a href="mailto:hello@greenwichdining.com">hello@greenwichdining.com</a> naming the establishment and the inspection date. The Health Department
+ holds the originals and can also release them under the Connecticut FOIA.</p>
+ <p class="note" id="reqnote" hidden></p>
+ 
+
  <h2>What we can't help with</h2>
  <p>We can't mediate a dispute with a restaurant, provide records the Health Department hasn't
  released, or advise on whether somewhere is safe to eat. The records are here so you can decide
  that yourself.</p>
 </section>
+<script>
+(function(){
+ var q=new URLSearchParams(location.search).get('request'); if(!q)return;
+ var m=q.match(/Inspections for (.+?) Type\s+(\S+)\s+- (\d+)-(\d+)-(\d+)/i);
+ var what=m?(m[1].trim()+', '+m[2].toLowerCase()+' inspection of '+m[3]+'/'+m[4]+'/'+m[5]):q;
+ var n=document.getElementById('reqnote'); n.textContent='Requesting: '+what; n.hidden=false;
+ var f=document.getElementById('reqform');
+ if(f){var t=f.querySelector('textarea'); t.value='Please send me a copy of the inspection form for '+what+'.';}
+ else{document.querySelectorAll('a[href^="mailto:"]').forEach(function(a){
+  a.href='mailto:hello@greenwichdining.com?subject='+encodeURIComponent('Inspection form request: '+what)
+   +'&body='+encodeURIComponent('Please send me a copy of the inspection form for '+what+'.');});}
+})();
+</script>
 </main>
 <footer class="wrap">
- <nav class="fnav2"><a href="/all/">All establishments</a><a href="/contact/">Contact</a><a href="/corrections/">Corrections</a><a href="/sponsorship/">Sponsorship</a></nav>
+ <nav class="fnav2"><a href="/all/">All establishments</a><a href="/map/">Map</a><a href="/research/">Does publishing this help?</a><a href="/contact/">Contact</a><a href="/corrections/">Corrections</a><a href="/sponsorship/">Sponsorship</a></nav>
  <p><strong>Source.</strong> Inspection reports obtained from the Town of Greenwich Department of
  Health under the Connecticut Freedom of Information Act, recorded on Connecticut DPH form EHS-108.</p>
  <p><strong>Please read.</strong> This is a reproduction of public records, not an official rating
