@@ -266,6 +266,7 @@ footer strong{color:var(--ink-2)}
    <a href="/contact/">Contact</a>
    <a href="/corrections/">Corrections</a>
    <a href="/sponsorship/">Sponsorship</a>
+   <a href="/research/">Does publishing this help?</a>
   </nav>
   <p><strong>Source.</strong> Inspection reports and the licensed-establishment list obtained from the Town of Greenwich
   Department of Health under the Connecticut Freedom of Information Act (Conn. Gen. Stat. §§ 1-200 et seq.).
@@ -419,7 +420,8 @@ footer strong{color:var(--ink-2)}
                 :'<span class="chip c-clean">No violations</span>')+'</div>'
     +(i.v.length?'<ul class="viols">'+vs+'</ul>':'<p class="none-note">No violations recorded at this inspection.</p>')
     +(i.due?'<p class="due">Corrections due: '+esc(i.due)+'</p>':'')
-    +(META.pdf_base&&i.f?'<p class="due"><a class="pdf" href="'+esc(META.pdf_base+encodeURIComponent(i.f))+'" rel="noopener">Original inspection form (PDF)</a></p>':'')
+    +(i.f?(META.pdf_base?'<p class="due"><a class="pdf" href="'+esc(META.pdf_base+encodeURIComponent(i.f))+'" rel="noopener">Original inspection form (PDF)</a></p>'
+       :'<p class="due"><a class="pdf" href="/contact/?request='+encodeURIComponent(i.f)+'#request">Request a copy of the original inspection form</a></p>'):'')
     +(i.vs&&i.vs!=='reconciled'&&i.vs!=='verified'?'<p class="pending '+(i.vs==='nosummary'?'note':'')+'">'+VNOTE[i.vs]+(i.vn?' <span class="vn">'+esc(i.vn)+'</span>':'')+'</p>':'')
     +'</article>';}).join('');
   $('detail').innerHTML=head+stats+'<div class="timeline">'+(body||'<p class="empty">No inspections on file.</p>')+'</div>';
