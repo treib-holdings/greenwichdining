@@ -213,9 +213,12 @@ footer a{color:var(--accent)}
 </section>
 <script>
 (function(){
- var q=new URLSearchParams(location.search).get('request'); if(!q)return;
- var m=q.match(/Inspections for (.+?) Type\s+(\S+)\s+- (\d+)-(\d+)-(\d+)/i);
- var what=m?(m[1].trim()+', '+m[2].toLowerCase()+' inspection of '+m[3]+'/'+m[4]+'/'+m[5]):q;
+ var P=new URLSearchParams(location.search), q=P.get('request'); if(!q)return;
+ var what;
+ if(P.get('est')&&P.get('date')){var d=P.get('date').split('-');
+  what=P.get('est')+', '+(P.get('type')||'')+' inspection of '+(+d[1])+'/'+(+d[2])+'/'+d[0];}
+ else{var m=q.match(/Inspections for (.+?) Type\s+(\S+)\s+- (\d+)-(\d+)-(\d+)/i);
+  what=m?(m[1].trim()+', '+m[2].toLowerCase()+' inspection of '+m[3]+'/'+m[4]+'/'+m[5]):q;}
  var n=document.getElementById('reqnote'); n.textContent='Requesting: '+what; n.hidden=false;
  var f=document.getElementById('reqform');
  if(f){var t=f.querySelector('textarea'); t.value='Please send me a copy of the inspection form for '+what+'.';}
