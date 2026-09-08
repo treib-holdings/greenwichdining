@@ -46,6 +46,9 @@
 body{background:var(--ground);color:var(--ink);font-family:"Source Sans 3",ui-sans-serif,system-ui,sans-serif;font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased}
 .wrap{max-width:1240px;margin:0 auto;padding:28px 22px 64px}
 h1,h2,h3{font-family:"Zilla Slab",Georgia,serif;text-wrap:balance;margin:0}
+.brand h1 a.home{color:inherit;text-decoration:none}
+.brand h1 a.home:hover{color:var(--accent)}
+.brand h1 a.home:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:3px}
 .masthead{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:18px;padding-bottom:16px;border-bottom:2px solid var(--accent)}
 .brand h1{font-size:2rem;font-weight:700;letter-spacing:-.01em;line-height:1.1}
 .brand .tag{font-family:"IBM Plex Mono",monospace;font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-top:6px}
@@ -201,7 +204,7 @@ footer strong{color:var(--ink-2)}
 
 <div class="wrap">
  <header class="masthead">
-  <div class="brand"><h1>Greenwich Dining Record</h1><div class="tag">Know before you dine</div></div>
+  <div class="brand"><h1><a href="/" class="home" title="Start over: clear the search and filters">Greenwich Dining Record</a></h1><div class="tag">Know before you dine</div></div>
   <div class="mast-stats">
    <div><b id="mEst">—</b><span>Establishments</span></div>
    <div><b id="mOpen">—</b><span>Open now</span></div>
