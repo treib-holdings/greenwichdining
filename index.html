@@ -145,6 +145,9 @@ a.lc:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 .pending{margin-top:9px;font-size:.84rem;color:var(--pend);background:var(--pend-bg);border-radius:5px;padding:7px 11px}
 .pending.note{color:var(--ink-3);background:transparent;border-left:2px solid var(--rule);border-radius:0;padding:2px 0 2px 11px}
 .pending .vn{display:block;margin-top:3px;opacity:.85}
+.corr{margin-top:9px;font-size:.84rem;color:var(--ink-2);border-left:2px solid var(--accent);padding:2px 0 2px 11px}
+.corr a{color:inherit;text-decoration:none;border-bottom:1px dotted var(--ink-3)}.corr a:hover{color:var(--accent)}
+.insp:target{scroll-margin-top:18px;background:var(--soft);border-radius:8px;padding-left:14px;padding-right:14px;margin-left:-14px;margin-right:-14px}
 .due{margin-top:8px;font-size:.84rem;color:var(--ink-3)}
 .lists{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;margin-top:22px}
 @media (max-width:820px){.lists{grid-template-columns:1fr}}
@@ -297,6 +300,7 @@ footer strong{color:var(--ink-2)}
    <dt>Pending verification</dt><dd>Every violation read off a form is checked against the count the inspector wrote in the form's own summary box. These records did not reconcile, or the summary box could not be read, so the reading is unconfirmed and not presented as fact.</dd>
    <dt>Each violation</dt><dd>The plain-language line under each violation says what a mark against that item usually means. <a href="/violations/">All 56 items, explained &rarr;</a></dd>
    <dt>No summary box</dt><dd>The inspector left the form's summary box blank, or the scan destroyed it, so there is nothing to check the reading against. The violations are shown as marked on the form, with a note.</dd>
+   <dt>Record corrected</dt><dd>A record changed after publication carries a note at the inspection concerned saying what changed and when. <a href="/corrections/">The full log &rarr;</a></dd>
   </dl>
  </section>
 
@@ -346,6 +350,7 @@ new Promise(function(res){
   nosummary:'This form carries no usable summary box, so the violations above could not be cross-checked against a second count. They are listed as marked on the form.',
   mismatch:'The violations above do not reconcile with the inspector\u2019s own summary on this form, so this record may be incomplete.',
   unclear:'The summary box on this form could not be read, so the violations above are unconfirmed.'};
+ var CLBL={corrected:'Record corrected',disputed:'Record disputed',response:'Establishment response'};
  var SAYS={clean:'No violations were recorded at the most recent inspection.',
   minor:'Non-priority violations were recorded at the most recent inspection.',
   priority:'At least one priority violation was recorded at the most recent inspection.',
@@ -477,7 +482,7 @@ new Promise(function(res){
     var why=(ITEMS[v.i]&&ITEMS[v.i].d)?'<span class="why">'+esc(ITEMS[v.i].d)+'</span>':'';
     return '<li class="viol t-'+v.tier+'"><span class="num">'+v.i+'</span><span class="ttl">'+esc((ITEMS[v.i]&&ITEMS[v.i].t)||v.t||'')+why+'</span>'
       +'<span class="marks"><span class="tier t-'+v.tier+'">'+v.tier+'</span>'+mk+'</span></li>';}).join('');
-   return '<article class="insp"><div class="insp-top"><span class="insp-date">'+fmt(i.date)+'</span>'
+   return '<article class="insp" id="i-'+i.date+'"><div class="insp-top"><span class="insp-date">'+fmt(i.date)+'</span>'
     +'<span class="insp-type">'+esc(i.type)+'</span>'
     +(i.v.length?'<span class="chip c-'+(i.np>0?'priority':'minor')+'">'+i.v.length+' violation'+(i.v.length>1?'s':'')+'</span>'
                 :'<span class="chip c-clean">No violations</span>')+'</div>'
@@ -486,6 +491,7 @@ new Promise(function(res){
     +(i.f?(META.pdf_base?'<p class="due"><a class="pdf" href="'+esc(META.pdf_base+encodeURIComponent(i.f))+'" rel="noopener">Original inspection form (PDF)</a></p>'
        :'<p class="due"><a class="pdf" href="/contact/?request='+encodeURIComponent(i.f)+'&est='+encodeURIComponent(e.name)+'&date='+i.date+'&type='+encodeURIComponent((i.type||'').toLowerCase())+'#request">Request a copy of the original inspection form</a></p>'):'')
     +(i.vs&&i.vs!=='reconciled'&&i.vs!=='verified'?'<p class="pending '+(i.vs==='nosummary'?'note':'')+'">'+VNOTE[i.vs]+(i.vn?' <span class="vn">'+esc(i.vn)+'</span>':'')+'</p>':'')
+    +(i.c?i.c.map(function(c){return '<p class="corr"><strong><a href="/corrections/">'+(CLBL.hasOwnProperty(c.k)?CLBL[c.k]:'Note')+'</a> '+fmt(c.d)+'.</strong> '+esc(c.t)+'</p>';}).join(''):'')
     +'</article>';}).join('');
   $('detail').innerHTML=head+stats+'<div class="timeline">'+(body||'<p class="empty">No inspections on file.</p>')+'</div>';
   wireShare(e); if(!noPush)syncUrl(e,true);
