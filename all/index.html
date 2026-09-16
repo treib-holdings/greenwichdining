@@ -157,6 +157,11 @@ footer a{color:var(--accent)}
 .clog li:last-child{border-bottom:1px solid var(--rule)}
 .clog .cd{font-family:"IBM Plex Mono",monospace;font-size:.78rem;color:var(--ink-2);padding-top:3px;white-space:nowrap}
 @media (max-width:560px){.clog li{grid-template-columns:1fr;gap:2px}}
+.jump{display:flex;gap:22px;flex-wrap:wrap;margin:14px 0 6px;font-size:.92rem;font-weight:600}
+.doc h2[id]{scroll-margin-top:18px}
+.clog-more{margin:0} .clog-more summary{cursor:pointer;padding:12px 0;color:var(--accent);font-weight:600;list-style:none}
+.clog-more summary::before{content:"+ ";} .clog-more[open] summary::before{content:"2 ";}
+.clog-more summary::-webkit-details-marker{display:none}
 .plain{list-style:none;padding:0}
 .plain li{padding:7px 0 7px 20px;position:relative;border-bottom:1px solid var(--line)}
 .plain li::before{content:"";position:absolute;left:0;top:15px;width:7px;height:2px;background:var(--accent)}
