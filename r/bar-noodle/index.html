@@ -73,7 +73,10 @@ h1{font-family:"Zilla Slab",Georgia,serif;font-size:2rem;margin:0 0 6px;text-wra
  background:var(--rule);border:1px solid var(--rule);border-radius:8px;overflow:hidden;margin:22px 0 30px}
 .stat{background:var(--surface);padding:12px 14px}
 .stat b{display:block;font-family:"Zilla Slab",Georgia,serif;font-size:1.42rem;font-variant-numeric:tabular-nums}
-.stat span{font-size:.7rem;letter-spacing:.05em;color:var(--ink-3);text-transform:uppercase}
+.stat span{font-size:.7rem;letter-spacing:.05em;color:var(--ink-3);text-transform:uppercase;white-space:nowrap}
+.stat b i{font-style:normal;font-size:.7em;color:var(--ink-3);margin-left:3px}
+.stat .tiers{display:block;margin-top:3px;font-style:normal;font-family:"IBM Plex Mono",monospace;font-size:.74rem;letter-spacing:0;text-transform:none;color:var(--ink-2)}
+.sub a.flink{color:var(--accent);text-decoration:none;border-bottom:1px dotted var(--accent)}.sub a.flink:hover{border-bottom-style:solid}
 .insp{border-top:1px solid var(--line);padding-top:18px;margin-top:22px}
 .ihead{display:flex;align-items:center;gap:11px;flex-wrap:wrap;margin-bottom:11px}
 .idate{font-family:"IBM Plex Mono",monospace;font-weight:500;font-size:1rem}
@@ -95,7 +98,7 @@ h1{font-family:"Zilla Slab",Georgia,serif;font-size:2rem;margin:0 0 6px;text-wra
 .note.corr a{color:inherit;text-decoration:none;border-bottom:1px dotted var(--ink-3)}.note.corr a:hover{color:var(--accent)}
 .insp:target{scroll-margin-top:18px;background:var(--soft);border-radius:8px;padding:18px 14px 12px;margin-left:-14px;margin-right:-14px}
 .rmap{height:240px;border:1px solid var(--line);border-radius:9px;margin:18px 0 6px;background:var(--soft)}
-.maplink{font-size:.84rem;margin:0 0 6px}
+.maplink{font-size:.84rem;margin:0 0 6px}.maplink a{color:var(--accent)}
 .pdf{font-size:.8rem;color:var(--ink-3);text-decoration:none;border-bottom:1px dotted var(--rule)}
 .pdf:hover{color:var(--accent)}
 .share{display:flex;gap:9px;flex-wrap:wrap;margin:24px 0 0}
@@ -129,14 +132,14 @@ footer a{color:var(--accent)}
 </div></div></header>
 <main class="wrap">
  <h1>Bar Noodle</h1>
- <p class="sub">1247 East Putnam Avenue, Riverside
-  &nbsp;·&nbsp; Restaurant / bar &nbsp;·&nbsp; Risk class III
-  &nbsp;·&nbsp; <span class="lic">LCB202600001</span></p>
+ <p class="sub">1247 East Putnam Avenue, <a class="flink" href="/?hood=Riverside" title="Everything in Riverside">Riverside</a>
+  &nbsp;·&nbsp; <a class="flink" href="/?kind=Restaurant%20/%20bar" title="All places of this kind">Restaurant / bar</a> &nbsp;·&nbsp; Risk class III
+  &nbsp;·&nbsp; <span class="lic" title="Town licence number">LCB202600001</span></p>
  <span class="badge b-none">No inspections on file</span>
  <p class="blurb">No inspections are on file for this establishment.</p>
  
  <div class="rmap" id="rmap" role="img" aria-label="Map showing Bar Noodle"></div><p class="maplink"><a href="/map/">See every establishment on the map →</a></p><script>document.addEventListener("DOMContentLoaded",function(){if(!window.L)return;var m=L.map("rmap",{scrollWheelZoom:false,attributionControl:true}).setView([41.041843,-73.577639],16);L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png",{attribution:"&copy; <a href=\"https://www.openstreetmap.org/copyright\">OpenStreetMap</a> contributors",maxZoom:19}).addTo(m);L.circleMarker([41.041843,-73.577639],{radius:9,color:"#0F4C5C",weight:2,fillColor:"#0F4C5C",fillOpacity:.85}).addTo(m).bindPopup("Bar Noodle<br>1247 East Putnam Avenue");});</script>
- <div class="stats"><div class="stat"><b>0</b><span>Inspections</span></div><div class="stat"><b>—</b><span>Days since</span></div><div class="stat"><b>0</b><span>Priority</span></div><div class="stat"><b>0</b><span>Priority fdn.</span></div><div class="stat"><b>0</b><span>Core</span></div><div class="stat"><b>0</b><span>Repeat</span></div></div>
+ <div class="stats"><div class="stat"><b>0</b><span>Inspections</span></div><div class="stat"><b>—</b><span>Since last</span></div><div class="stat"><b>0</b><span>Violations<em class="tiers">0 P &middot; 0 Pf &middot; 0 C</em></span></div><div class="stat"><b>0</b><span>Repeat</span></div><div class="stat"><b>—</b><span>Trend</span></div></div>
  <p class="sub">No inspection reports are on file for this establishment.</p>
  <div class="share">
   <button type="button" id="sh">Share this record</button>

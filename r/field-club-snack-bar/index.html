@@ -73,7 +73,10 @@ h1{font-family:"Zilla Slab",Georgia,serif;font-size:2rem;margin:0 0 6px;text-wra
  background:var(--rule);border:1px solid var(--rule);border-radius:8px;overflow:hidden;margin:22px 0 30px}
 .stat{background:var(--surface);padding:12px 14px}
 .stat b{display:block;font-family:"Zilla Slab",Georgia,serif;font-size:1.42rem;font-variant-numeric:tabular-nums}
-.stat span{font-size:.7rem;letter-spacing:.05em;color:var(--ink-3);text-transform:uppercase}
+.stat span{font-size:.7rem;letter-spacing:.05em;color:var(--ink-3);text-transform:uppercase;white-space:nowrap}
+.stat b i{font-style:normal;font-size:.7em;color:var(--ink-3);margin-left:3px}
+.stat .tiers{display:block;margin-top:3px;font-style:normal;font-family:"IBM Plex Mono",monospace;font-size:.74rem;letter-spacing:0;text-transform:none;color:var(--ink-2)}
+.sub a.flink{color:var(--accent);text-decoration:none;border-bottom:1px dotted var(--accent)}.sub a.flink:hover{border-bottom-style:solid}
 .insp{border-top:1px solid var(--line);padding-top:18px;margin-top:22px}
 .ihead{display:flex;align-items:center;gap:11px;flex-wrap:wrap;margin-bottom:11px}
 .idate{font-family:"IBM Plex Mono",monospace;font-weight:500;font-size:1rem}
@@ -95,7 +98,7 @@ h1{font-family:"Zilla Slab",Georgia,serif;font-size:2rem;margin:0 0 6px;text-wra
 .note.corr a{color:inherit;text-decoration:none;border-bottom:1px dotted var(--ink-3)}.note.corr a:hover{color:var(--accent)}
 .insp:target{scroll-margin-top:18px;background:var(--soft);border-radius:8px;padding:18px 14px 12px;margin-left:-14px;margin-right:-14px}
 .rmap{height:240px;border:1px solid var(--line);border-radius:9px;margin:18px 0 6px;background:var(--soft)}
-.maplink{font-size:.84rem;margin:0 0 6px}
+.maplink{font-size:.84rem;margin:0 0 6px}.maplink a{color:var(--accent)}
 .pdf{font-size:.8rem;color:var(--ink-3);text-decoration:none;border-bottom:1px dotted var(--rule)}
 .pdf:hover{color:var(--accent)}
 .share{display:flex;gap:9px;flex-wrap:wrap;margin:24px 0 0}
@@ -129,14 +132,14 @@ footer a{color:var(--accent)}
 </div></div></header>
 <main class="wrap">
  <h1>Field Club Snack Bar</h1>
- <p class="sub">Greenwich
-  &nbsp;·&nbsp; Club / civic
-  &nbsp;·&nbsp; <span class="lic">LC1-FS-401</span></p>
+ <p class="sub"><a class="flink" href="/?hood=Greenwich" title="Everything in Greenwich">Greenwich</a>
+  &nbsp;·&nbsp; <a class="flink" href="/?kind=Club%20/%20civic" title="All places of this kind">Club / civic</a>
+  &nbsp;·&nbsp; <span class="lic" title="Town licence number">LC1-FS-401</span></p>
  <span class="badge b-clean">No violations</span>
  <p class="blurb">No violations were recorded at the most recent inspection.</p>
  
  
- <div class="stats"><div class="stat"><b>2</b><span>Inspections</span></div><div class="stat"><b>119</b><span>Days since</span></div><div class="stat"><b>0</b><span>Priority</span></div><div class="stat"><b>0</b><span>Priority fdn.</span></div><div class="stat"><b>1</b><span>Core</span></div><div class="stat"><b>0</b><span>Repeat</span></div></div>
+ <div class="stats"><div class="stat"><b>2</b><span>Inspections</span></div><div class="stat"><b>119<i>d</i></b><span>Since last</span></div><div class="stat"><b>1</b><span>Violations<em class="tiers">0 P &middot; 0 Pf &middot; 1 C</em></span></div><div class="stat"><b>0</b><span>Repeat</span></div><div class="stat"><b>—</b><span>Trend</span></div></div>
  <div class="insp" id="i-2026-05-06"><div class="ihead"><span class="idate">May 6, 2026</span><span class="itype">Routine</span><span class="icount" style="color:#2E7D53;background:#E4F1E9">no violations</span></div><p class="due"><a class="pdf" href="/contact/?request=ES%20-%20Inspections%20for%20FIELD%20CLUB%20SNACK%20BAR%20Type%20%20ROUTINE%20%20-%205-6-2026%20License%20%20%20LC1-FS-401%20for%20Parcel%20%20%2010-1207.pdf&est=Field%20Club%20Snack%20Bar&date=2026-05-06&type=routine#request">Request a copy of the original inspection form</a></p></div><div class="insp" id="i-2025-05-22"><div class="ihead"><span class="idate">May 22, 2025</span><span class="itype">Routine</span><span class="icount" style="color:#9A6510;background:#F6EDDF">1 violation</span></div><div class="v C"><span class="vn">48</span><span class="vt">Warewashing facilities: installed, maintained and used; cleaning agents, sanitizers, test strips available<span class="vd">The dishwasher or three-compartment sink was not working correctly, sanitizer was too weak or missing, or no test strips were available to check it.</span></span><span class="chip" style="color:var(--pend);background:var(--pend-bg)">C</span></div><p class="due"><a class="pdf" href="/contact/?request=ES%20-%20Inspections%20for%20FIELD%20CLUB%20SNACK%20BAR%20Type%20%20ROUTINE%20%20-%205-22-2025%20License%20%20%20LC1-FS-401%20for%20Parcel%20%20%2010-1207.pdf&est=Field%20Club%20Snack%20Bar&date=2025-05-22&type=routine#request">Request a copy of the original inspection form</a></p></div>
  <div class="share">
   <button type="button" id="sh">Share this record</button>

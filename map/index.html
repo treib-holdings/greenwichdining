@@ -80,16 +80,23 @@ h1,h2,h3{font-family:"Zilla Slab",Georgia,serif;text-wrap:balance;margin:0}
 .tagx{font-size:.62rem;letter-spacing:.06em;text-transform:uppercase;border:1px solid var(--line);color:var(--ink-3);border-radius:4px;padding:1px 5px;margin-left:6px;white-space:nowrap}
 .rec-head{padding:20px 20px;border-bottom:1px solid var(--line)}
 .rec-head h2{font-size:1.55rem;font-weight:600;line-height:1.15}
-.rec-sub{display:flex;flex-wrap:wrap;gap:6px 16px;margin-top:7px;color:var(--ink-2);font-size:.9rem}
+.rec-sub{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 0;margin-top:8px;color:var(--ink-2);font-size:.9rem}
+.rec-sub .fact+.fact::before{content:"\00b7";margin:0 9px;color:var(--ink-3)}
 .rec-sub .mono{color:var(--ink-3);font-size:.8rem;font-family:"IBM Plex Mono",monospace}
+.rec-sub a.flink{color:var(--accent);text-decoration:none;border-bottom:1px dotted var(--accent)}
+.rec-sub a.flink:hover{border-bottom-style:solid}
+.verdict .chip{margin-right:8px;vertical-align:1px}
 .chip{display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:3px 11px;font-size:.74rem;font-weight:600;letter-spacing:.03em;white-space:nowrap}
 .c-clean{background:var(--clean-bg);color:var(--clean)}.c-minor{background:var(--minor-bg);color:var(--minor)}
 .c-priority{background:var(--prio-bg);color:var(--prio)}.c-unverified,.c-none{background:var(--pend-bg);color:var(--pend)}
 .verdict{margin-top:13px;font-size:.92rem;color:var(--ink-2)}
 .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(108px,1fr));border-bottom:1px solid var(--line)}
+@media (max-width:600px){.stat{padding:12px 14px}}
 .stat{padding:13px 20px;border-right:1px solid var(--line-soft)}.stat:last-child{border-right:0}
 .stat b{display:block;font-family:"IBM Plex Mono",monospace;font-size:1.3rem;font-variant-numeric:tabular-nums;line-height:1.2}
-.stat span{font-size:.7rem;letter-spacing:.07em;text-transform:uppercase;color:var(--ink-3)}
+.stat b i{font-style:normal;font-size:.7em;color:var(--ink-3);margin-left:3px}
+.stat span{font-size:.7rem;letter-spacing:.07em;text-transform:uppercase;color:var(--ink-3);white-space:nowrap}
+.stat .tiers{display:block;margin-top:3px;font-style:normal;font-family:"IBM Plex Mono",monospace;font-size:.74rem;letter-spacing:0;text-transform:none;color:var(--ink-2)}
 .timeline{padding:4px 20px 20px}
 .insp{padding:16px 0;border-bottom:1px solid var(--line-soft)}.insp:last-child{border-bottom:0}
 .insp-top{display:flex;flex-wrap:wrap;align-items:baseline;gap:10px}
@@ -451,9 +458,11 @@ new Promise(function(res){
   current=e;
   if(!e){$('detail').hidden=true;$('detail').innerHTML='';$('mapwrap').hidden=false;showMap();return;}
   $('mapwrap').hidden=true;$('detail').hidden=false;
-  var bits='<span>'+(e.addr?esc(e.addr)+(e.city?', '+esc(e.city):''):'Address not in the town\'s current licensed list')+'</span>'
-   +'<span>'+esc(e.cat)+'</span>'+(e.cls?'<span>Risk class '+['I','II','III','IV'][e.cls-1]+'</span>':'')
-   +'<span class="mono">License '+esc(e.lic)+'</span>';
+  var flink=function(f,param,v,title){return '<a class="flink" data-f="'+f+'" data-v="'+esc(v)+'" href="/?'+param+'='+encodeURIComponent(v)+'" title="'+esc(title)+'">'+esc(v)+'</a>';};
+  var bits='<span class="fact">'+(e.addr?esc(e.addr)+(e.city?', '+flink('fCity','hood',e.city,'Everything in '+e.city):''):'Address not in the town\'s current licensed list')+'</span>'
+   +(e.cat?'<span class="fact">'+flink('fCat','kind',e.cat,'All places of this kind')+'</span>':'')
+   +(e.cls?'<span class="fact">Risk class '+['I','II','III','IV'][e.cls-1]+'</span>':'')
+   +'<span class="fact mono" title="Town licence number">'+esc(e.lic)+'</span>';
   var REL={pred:['Forms filed under this licence number carry this name; the number is now listed to {a}.','Earlier forms filed under this licence number carry the name {a}. They are shown on that page, not this one.'],
    venue:['A separate operation filed by the Health Department under the same licence number as {a}.','{a} is filed under this licence number and is shown on its own page.'],
    misfiled:['The Health Department filed one of these forms under licence {lic}, which its list assigns to {a}.','One form filed under this licence number is an inspection of {a}; it is shown on that page.']};
@@ -462,20 +471,18 @@ new Promise(function(res){
   (e.rel_from||[]).forEach(function(r){relNote+='<p class="verdict">'+REL[r.kind][1].replace('{a}','<a href="/r/'+r.slug+'/">'+esc(r.name)+'</a>').replace('{lic}',esc(r.lic||''))+'</p>';});
   var closedNote=e.status==='closed'?'<p class="verdict"><strong>No longer on the town\'s licensed list.</strong> This establishment was inspected during the record period but does not appear among establishments licensed and open as of July 2026.</p>':'';
   var head='<a class="backmap" href="/" id="backMap">&larr; Back to the map</a><div class="rec-head"><h2>'+esc(e.name)+'</h2><div class="rec-sub">'+bits+'</div>'
-   +'<div><span class="chip c-'+e.ind+'" style="margin-top:12px">'+LABEL[e.ind]+'</span></div>'
-   +'<p class="verdict">'+SAYS[e.ind]+'</p>'+closedNote+relNote
+   +'<p class="verdict"><span class="chip c-'+e.ind+'">'+LABEL[e.ind]+'</span>'+SAYS[e.ind]+'</p>'+closedNote+relNote
    +'<div class="share"><button type="button" id="shareBtn">Share this record</button>'
    +'<a class="permalink" href="/r/'+e.slug+'/">/r/'+e.slug+'/</a></div></div>';
-  var since=e.since==null?'—':(e.since>365?(e.since/365).toFixed(1)+' yr':e.since+' d');
+  var since=e.since==null?'—':(e.since>365?(e.since/365).toFixed(1)+'<i>yr</i>':e.since+'<i>d</i>');
   var tr=e.trend==null?'—':(e.trend>0?'+':'')+e.trend;
+  var nv=e.tp+e.tpf+e.tc;
   var stats='<div class="stats">'
    +'<div class="stat"><b>'+e.n+'</b><span>Inspections</span></div>'
    +'<div class="stat"><b>'+since+'</b><span>Since last</span></div>'
-   +'<div class="stat"><b>'+e.tp+'</b><span>Priority</span></div>'
-   +'<div class="stat"><b>'+e.tpf+'</b><span>Priority Fdn.</span></div>'
-   +'<div class="stat"><b>'+e.tc+'</b><span>Core</span></div>'
+   +'<div class="stat"><b>'+nv+'</b><span>Violations<em class="tiers">'+e.tp+' P &middot; '+e.tpf+' Pf &middot; '+e.tc+' C</em></span></div>'
    +'<div class="stat"><b>'+e.trep+'</b><span>Repeat</span></div>'
-   +'<div class="stat"><b>'+tr+'</b><span>Trend</span></div></div>';
+   +'<div class="stat" title="Average severity per visit, later half of visits minus earlier half. Positive means getting worse."><b>'+tr+'</b><span>Trend</span></div></div>';
   var body=e.ins.map(function(i){
    var vs=i.v.map(function(v){
     var mk=(v.cos?'<span class="mark">Corrected on site</span>':'')+(v.rep?'<span class="mark">Repeat</span>':'');
@@ -603,13 +610,27 @@ new Promise(function(res){
  function bySlug(s){for(var i=0;i<EST.length;i++){if(EST[i].slug===s)return EST[i];}return null;}
  window.addEventListener('popstate',function(){
   var m=location.pathname.match(/^\/r\/([^\/]+)\/?$/);
-  var e=m?bySlug(m[1]):null; show('dir'); if(e){renderDetail(e,true);}else{renderDetail(null,true);}
+  var e=m?bySlug(m[1]):null; show('dir'); if(e){renderDetail(e,true);}else{
+   $('q').value='';$('fCat').value='';$('fCity').value='';applyUrlFilters();renderDetail(null,true);renderList();}
  });
  $('detail').addEventListener('click',function(ev){
+  var fl=ev.target.closest('a.flink');
+  if(fl){ev.preventDefault();
+   $('q').value='';$('fCat').value='';$('fCity').value='';$('fStat').value='';$('fStatus').value='open';
+   $(fl.dataset.f).value=fl.dataset.v;
+   try{history.pushState({},'',fl.getAttribute('href'));}catch(err){}
+   renderDetail(null,true); renderList(); window.scrollTo(0,0); return;}
   if(!ev.target.closest('#backMap'))return; ev.preventDefault();
   try{history.pushState({},'','/');}catch(err){}
   renderDetail(null,true); renderList();
  });
+ function applyUrlFilters(){
+  var any=false; try{
+   var p=new URLSearchParams(location.search);
+   [['kind','fCat'],['hood','fCity'],['q','q']].forEach(function(x){var v=p.get(x[0]);if(v){$(x[1]).value=v;any=true;}});
+  }catch(err){}
+  return any;
+ }
  $('lists').addEventListener('click',function(ev){
   var b=ev.target.closest('.rank');if(!b)return;
   var e=find(b.dataset.k);if(!e)return;
@@ -626,7 +647,7 @@ new Promise(function(res){
   var o=$('fStat').querySelector('option[value="unverified"]'); if(o)o.remove();
   document.querySelectorAll('.maplegend span').forEach(function(sp){if(sp.querySelector('.s-unverified'))sp.style.display='none';});
  }
- wireBrowse(); renderLists(); renderList(); renderDetail(null,true);
+ wireBrowse(); renderLists(); applyUrlFilters(); renderList(); renderDetail(null,true);
 }).catch(function(err){
  var c=document.getElementById('count'); if(c){c.hidden=false;c.textContent='The records could not be loaded. Reload the page, or try again in a minute.';}
  if(window.console)console.error(err);

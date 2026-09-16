@@ -73,7 +73,10 @@ h1{font-family:"Zilla Slab",Georgia,serif;font-size:2rem;margin:0 0 6px;text-wra
  background:var(--rule);border:1px solid var(--rule);border-radius:8px;overflow:hidden;margin:22px 0 30px}
 .stat{background:var(--surface);padding:12px 14px}
 .stat b{display:block;font-family:"Zilla Slab",Georgia,serif;font-size:1.42rem;font-variant-numeric:tabular-nums}
-.stat span{font-size:.7rem;letter-spacing:.05em;color:var(--ink-3);text-transform:uppercase}
+.stat span{font-size:.7rem;letter-spacing:.05em;color:var(--ink-3);text-transform:uppercase;white-space:nowrap}
+.stat b i{font-style:normal;font-size:.7em;color:var(--ink-3);margin-left:3px}
+.stat .tiers{display:block;margin-top:3px;font-style:normal;font-family:"IBM Plex Mono",monospace;font-size:.74rem;letter-spacing:0;text-transform:none;color:var(--ink-2)}
+.sub a.flink{color:var(--accent);text-decoration:none;border-bottom:1px dotted var(--accent)}.sub a.flink:hover{border-bottom-style:solid}
 .insp{border-top:1px solid var(--line);padding-top:18px;margin-top:22px}
 .ihead{display:flex;align-items:center;gap:11px;flex-wrap:wrap;margin-bottom:11px}
 .idate{font-family:"IBM Plex Mono",monospace;font-weight:500;font-size:1rem}
@@ -95,7 +98,7 @@ h1{font-family:"Zilla Slab",Georgia,serif;font-size:2rem;margin:0 0 6px;text-wra
 .note.corr a{color:inherit;text-decoration:none;border-bottom:1px dotted var(--ink-3)}.note.corr a:hover{color:var(--accent)}
 .insp:target{scroll-margin-top:18px;background:var(--soft);border-radius:8px;padding:18px 14px 12px;margin-left:-14px;margin-right:-14px}
 .rmap{height:240px;border:1px solid var(--line);border-radius:9px;margin:18px 0 6px;background:var(--soft)}
-.maplink{font-size:.84rem;margin:0 0 6px}
+.maplink{font-size:.84rem;margin:0 0 6px}.maplink a{color:var(--accent)}
 .pdf{font-size:.8rem;color:var(--ink-3);text-decoration:none;border-bottom:1px dotted var(--rule)}
 .pdf:hover{color:var(--accent)}
 .share{display:flex;gap:9px;flex-wrap:wrap;margin:24px 0 0}
@@ -129,14 +132,14 @@ footer a{color:var(--accent)}
 </div></div></header>
 <main class="wrap">
  <h1>Burke Catering Llc</h1>
- <p class="sub">Greenwich
-  &nbsp;·&nbsp; Catering
-  &nbsp;·&nbsp; <span class="lic">LCB201300390</span></p>
+ <p class="sub"><a class="flink" href="/?hood=Greenwich" title="Everything in Greenwich">Greenwich</a>
+  &nbsp;·&nbsp; <a class="flink" href="/?kind=Catering" title="All places of this kind">Catering</a>
+  &nbsp;·&nbsp; <span class="lic" title="Town licence number">LCB201300390</span></p>
  <span class="badge b-minor">Non-priority only</span>
  <p class="blurb">Only non-priority violations were recorded at the most recent inspection.</p>
  
  
- <div class="stats"><div class="stat"><b>2</b><span>Inspections</span></div><div class="stat"><b>699</b><span>Days since</span></div><div class="stat"><b>0</b><span>Priority</span></div><div class="stat"><b>2</b><span>Priority fdn.</span></div><div class="stat"><b>2</b><span>Core</span></div><div class="stat"><b>0</b><span>Repeat</span></div></div>
+ <div class="stats"><div class="stat"><b>2</b><span>Inspections</span></div><div class="stat"><b>1.9<i>yr</i></b><span>Since last</span></div><div class="stat"><b>4</b><span>Violations<em class="tiers">0 P &middot; 2 Pf &middot; 2 C</em></span></div><div class="stat"><b>0</b><span>Repeat</span></div><div class="stat"><b>—</b><span>Trend</span></div></div>
  <div class="insp" id="i-2024-10-03"><div class="ihead"><span class="idate">Oct 3, 2024</span><span class="itype">Routine</span><span class="icount" style="color:#9A6510;background:#F6EDDF">2 violations</span></div><div class="v Pf"><span class="vn">23</span><span class="vt">Proper date marking and disposition<span class="tag">corrected on site</span><span class="vd">Ready-to-eat food held more than 24 hours was not labeled with the date it was made or opened, or was kept past the seven-day limit.</span></span><span class="chip" style="color:var(--minor);background:var(--minor-bg)">Pf</span></div><div class="v C"><span class="vn">38</span><span class="vt">Insects, rodents, and animals not present<span class="vd">Evidence of insects, rodents or animals was found, such as droppings, flies or gaps that let them in, or a pet was in a food area.</span></span><span class="chip" style="color:var(--pend);background:var(--pend-bg)">C</span></div><p class="due">Corrections due: 90days</p><p class="due"><a class="pdf" href="/contact/?request=ES%20-%20Inspections%20for%20BURKE%20CATERING%20Type%20%20ROUTINE%20%20-%2010-3-2024%20License%20%20%20LCB201300390%20for%20Parcel%20%20%2004-1088.pdf&est=Burke%20Catering%20Llc&date=2024-10-03&type=routine#request">Request a copy of the original inspection form</a></p></div><div class="insp" id="i-2024-01-09"><div class="ihead"><span class="idate">Jan 9, 2024</span><span class="itype">Routine</span><span class="icount" style="color:#9A6510;background:#F6EDDF">2 violations</span></div><div class="v Pf"><span class="vn">5</span><span class="vt">Written procedures for responding to vomiting and diarrheal events<span class="vd">The kitchen had no written plan for cleaning up after someone vomits or has diarrhea on the premises, an event that can spread norovirus widely.</span></span><span class="chip" style="color:var(--minor);background:var(--minor-bg)">Pf</span></div><div class="v C"><span class="vn">37</span><span class="vt">Food properly labeled; original container<span class="vd">Food taken out of its original container, or bulk items such as flour or sugar, was not labeled with what it is, or packaged food lacked required labels.</span></span><span class="chip" style="color:var(--pend);background:var(--pend-bg)">C</span></div><p class="due"><a class="pdf" href="/contact/?request=ES%20-%20Inspections%20for%20BURKE%20CATERING%20LLC%20Type%20%20ROUTINE%20%20-%201-9-2024%20License%20%20%20LCB201300390%20for%20Parcel%20%20%2004-1088-S.pdf&est=Burke%20Catering%20Llc&date=2024-01-09&type=routine#request">Request a copy of the original inspection form</a></p></div>
  <div class="share">
   <button type="button" id="sh">Share this record</button>
