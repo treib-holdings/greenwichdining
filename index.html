@@ -211,7 +211,7 @@ a.lc:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 .legend{margin-top:26px;background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:16px 20px}
 .legend h3{font-size:1rem;margin-bottom:9px}
 .legend dl{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:9px 26px;margin:0}
-.legend dt{font-weight:600;font-size:.86rem}.legend dd{margin:0 0 4px;font-size:.86rem;color:var(--ink-2)}
+.legend dt{font-weight:600;font-size:.86rem}.legend dd{margin:0 0 4px;font-size:.86rem;color:var(--ink-2)}.legend dd a{color:var(--accent)}
 .legend .keyintro{font-size:.86rem;color:var(--ink-2);margin:0 0 10px}
 .legend .colourkey{margin-bottom:14px;padding-bottom:12px;border-bottom:1px solid var(--line)}
 .legend .colourkey dt{display:flex;align-items:center;gap:7px;align-self:start}
@@ -241,13 +241,59 @@ footer strong{color:var(--ink-2)}
 .maplegend span{display:inline-flex;align-items:center;gap:6px}
 .maplegend .stripe{display:inline-block;width:10px;height:10px;border-radius:50%;position:static}
 .mapcount{font-size:.8rem;color:var(--ink-3);font-family:"IBM Plex Mono",monospace}
-.mapnote{font-size:.82rem;color:var(--ink-3);max-width:74ch;margin:0;padding:12px 20px 16px}
+.mapnote{font-size:.82rem;color:var(--ink-3);max-width:74ch;margin:0;padding:12px 20px 16px}.mapnote a{color:var(--accent)}
 .leaflet-popup-content{font:14px/1.4 "Source Sans 3",system-ui,sans-serif;color:#14201F}
 .leaflet-popup-content b{font-family:"Zilla Slab",Georgia,serif;font-size:15px}
 .leaflet-popup-content a{color:#0F4C5C}
 .pdf{font-size:.78rem;color:var(--ink-3);text-decoration:none;border-bottom:1px dotted var(--rule);margin-left:auto}
 .pdf:hover{color:var(--accent)}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+
+.fol{--f-soft:var(--soft,var(--surface-2));--f-rule:var(--rule,var(--line))}
+.fol summary,.fol-btn{display:inline-flex;align-items:center;gap:8px;list-style:none;cursor:pointer;font:inherit;font-size:.85rem;font-weight:600;
+ padding:8px 15px;border-radius:7px;border:1px solid var(--f-rule);background:var(--surface);color:var(--ink);user-select:none;-webkit-user-select:none}
+.fol summary::-webkit-details-marker{display:none}
+.fol summary:hover{border-color:var(--accent);color:var(--accent)}
+.fol summary:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.fol summary svg{width:16px;height:16px;flex:none}
+.fol[open]>summary{border-color:var(--accent);color:var(--accent)}
+.fol-pop{position:absolute;z-index:1100;left:0;top:calc(100% + 8px);width:min(440px,100%);padding:16px 18px 14px;background:var(--surface);
+ border:1px solid var(--f-rule);border-radius:10px;box-shadow:0 1px 2px rgba(16,38,40,.08),0 14px 34px -14px rgba(16,38,40,.38)}
+.fol-box{margin:26px 0 0;padding:18px 20px 16px;background:var(--f-soft);border-radius:9px}
+.fol-box .fol-in{max-width:520px}
+.fol .fol-h{font-family:"Zilla Slab",Georgia,serif;font-size:1.06rem;font-weight:700;line-height:1.25;margin:0 0 4px;color:var(--ink)}
+.fol-l{display:block;font-size:.92rem;line-height:1.45;color:var(--ink-2);margin:0 0 10px}
+.fol-l b{color:var(--ink);font-weight:600}
+.fol-r{display:flex;gap:8px;flex-wrap:wrap}
+.fol-r input[type=email]{flex:1 1 210px;min-width:0;font:inherit;padding:9px 11px;border:1px solid var(--f-rule);border-radius:7px;
+ background:var(--surface);color:var(--ink)}
+.fol-box .fol-r input[type=email]{background:var(--surface)}
+.fol-r input[type=email]::placeholder{color:var(--ink-2);opacity:1}
+.fol-r input[type=email]:focus-visible{outline:2px solid var(--accent);outline-offset:1px;border-color:var(--accent)}
+.fol-r button{font:inherit;font-weight:600;padding:9px 18px;border:0;border-radius:7px;background:var(--accent);color:var(--ground);cursor:pointer;white-space:nowrap}
+.fol-r button:hover{filter:brightness(1.08)}
+.fol-r button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.fol-r button[disabled]{opacity:.6;cursor:default}
+.fol .fol-n{font-size:.8rem;line-height:1.45;color:var(--ink-2);margin:9px 0 0}
+.fol .fol-n a{color:inherit}
+.fol .fol-n a:hover{color:var(--accent)}
+.fol-c{display:flex;align-items:flex-start;gap:9px;margin:0 0 12px;font-size:.86rem;line-height:1.4;color:var(--ink-2);cursor:pointer}
+.fol-c input{flex:none;width:17px;height:17px;margin:1px 0 0;accent-color:var(--accent);cursor:pointer}
+.fol-c input:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.fol-hp{position:absolute!important;left:-9999px!important;width:1px;height:1px;overflow:hidden}
+@media (max-width:560px){.fol-pop{width:100%}.fol-r button{flex:1 1 auto}}
+@media print{.fol,.fol-box{display:none}}
+.share{position:relative}
+#detail>.fol-box{margin:0 20px 20px}
+.fol-band{margin-top:26px;background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:18px 20px 16px;box-shadow:var(--shadow)}
+.fol-band .fol-in{max-width:none;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:6px 32px;align-items:center}
+.fol-band .fol-h{grid-column:1;font-size:1.12rem;margin:0}
+.fol-band .fol-f{display:contents}
+.fol-band .fol-l{grid-column:1;margin:0}
+.fol-band .fol-r{grid-column:2;grid-row:1/span 2}
+.fol-band .fol-n{grid-column:1/-1;margin-top:4px}
+@media (max-width:760px){.fol-band .fol-in{grid-template-columns:1fr}.fol-band .fol-r{grid-column:1;grid-row:auto;margin-top:6px}}
+#viewDir:not([hidden]):has(#detail:not([hidden]))~.fol-band{display:none}
 </style>
 
 <div class="wrap">
@@ -334,6 +380,7 @@ label();})();</script>
    An establishment can appear on two lists: a poor overall record that is improving sharply belongs on both.</p>
  </div>
 
+<section class="fol fol-box fol-band" aria-label="Email alerts"><div class="fol-in"><h3 class="fol-h">Get an email when new records are published</h3><form class="fol-f" action="https://buttondown.com/api/emails/embed-subscribe/greenwichdining" method="POST" data-tag="new-records"><input type="hidden" name="tag" value="new-records"><input type="hidden" name="embed" value="1"><label class="fol-l" for="fe-home">One email per batch: every establishment with a new inspection, newest first.</label><div class="fol-r"><input id="fe-home" type="email" name="email" required autocomplete="email" inputmode="email" autocapitalize="off" spellcheck="false" placeholder="you@example.com"><button type="submit">Notify me</button></div><p class="fol-n">Records reach us from the Town in batches, not on a schedule. We write only when a batch is posted, or to correct something an earlier email reported. Every email has a one-click unsubscribe. <a href="/privacy/">Privacy</a></p></form></div></section>
  <section class="legend" id="how">
   <h3>How to read these records</h3>
   <p class="keyintro">The color beside each name is what the <strong>most recent</strong> inspection found, nothing more.
@@ -366,11 +413,13 @@ label();})();</script>
    <a href="/lists/cleanest-records/">Cleanest records</a>
    <a href="/lists/most-improved/">Most improved</a>
    <a href="/lists/declining-records/">Declining records</a>
+   <a href="/alerts/">Email alerts</a>
    <a href="/contact/">Contact</a>
    <a href="/corrections/">Corrections</a>
    <a href="/sponsorship/">Sponsorship</a>
    <a href="/violations/">What violations mean</a>
    <a href="/research/">Does publishing this help?</a>
+   <a href="/privacy/">Privacy</a>
    <a href="https://www.instagram.com/greenwichdiningrecord/" rel="me noopener">Instagram</a>
   </nav>
   <p><strong>Source.</strong> Inspection reports and the licensed-establishment list obtained from the Town of Greenwich
@@ -538,6 +587,11 @@ new Promise(function(res){
    attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'}).addTo(RECMAP);
   L.circleMarker([e.lat,e.lon],{radius:9,color:'#fff',weight:2,fillColor:colourOf(e.ind)||'#0F4C5C',fillOpacity:.92}).addTo(RECMAP);
  }
+ var FOL={"form": "<form class=\"fol-f\" action=\"https://buttondown.com/api/emails/embed-subscribe/greenwichdining\" method=\"POST\" data-tag=\"__TAG__\"><input type=\"hidden\" name=\"tag\" value=\"__TAG__\"><input type=\"hidden\" name=\"embed\" value=\"1\"><label class=\"fol-l\" for=\"__ID__\">__LABEL__</label>__ALSO__<div class=\"fol-r\"><input id=\"__ID__\" type=\"email\" name=\"email\" required autocomplete=\"email\" inputmode=\"email\" autocapitalize=\"off\" spellcheck=\"false\" placeholder=\"you@example.com\"><button type=\"submit\">__CTA__</button></div><p class=\"fol-n\">__NOTE__ <a href=\"/privacy/\">Privacy</a></p></form>", "icon": "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><rect x=\"3\" y=\"5\" width=\"18\" height=\"14\" rx=\"2\"/><path d=\"m3 7 9 6 9-6\"/></svg>", "prefix": "", "label": "Get an email when a new inspection is posted for <b>__NAME__</b>, or its record is corrected.", "note": "Only when this record changes: a new inspection, or a correction to one. Every email has a one-click unsubscribe, and a link to stop one place and keep the rest.", "also": "<label class=\"fol-c\"><input type=\"checkbox\" name=\"tag\" value=\"new-records\" id=\"__ID__-all\"><span>Also email me when new records are published for any place in Greenwich.</span></label>"};
+ function folForm(id,e){return FOL.form.split('__TAG__').join(esc(FOL.prefix+e.slug)).split('__ID__').join(id)
+   .split('__LABEL__').join(FOL.label.split('__NAME__').join(esc(e.name))).split('__CTA__').join('Email me').split('__NOTE__').join(FOL.note).split('__ALSO__').join(FOL.also.split('__ID__').join(id));}
+ function folBtn(e){return (FOL&&e.status==='open')?'<details class="fol"><summary>'+FOL.icon+'Email me when this record updates</summary><div class="fol-pop">'+folForm('fe-top',e)+'</div></details>':'';}
+ function folBox(e){return (FOL&&e.status==='open'&&e.ins.length)?'<section class="fol fol-box" aria-label="Email alerts for this record"><div class="fol-in"><h3 class="fol-h">That is everything on file.</h3>'+folForm('fe-end',e)+'</div></section>':'';}
  function renderDetail(e,noPush){
   if(RECMAP){try{RECMAP.remove();}catch(err){}RECMAP=null;}
   current=e;
@@ -558,7 +612,7 @@ new Promise(function(res){
   var closedNote=e.status==='closed'?'<p class="verdict"><strong>No longer on the town\'s licensed list.</strong> This establishment was inspected during the record period but does not appear among establishments licensed and open as of July 2026.</p>':'';
   var head='<a class="backmap" href="/" id="backMap">&larr; Back to the map</a><div class="rec-head"><h2>'+esc(e.name)+'</h2><div class="rec-sub">'+bits+'</div>'
    +'<p class="verdict"><span class="chip c-'+e.ind+'">'+LABEL[e.ind]+'</span>'+SAYS[e.ind]+'</p>'+closedNote+relNote
-   +'<div class="share"><button type="button" id="shareBtn">Share this record</button>'
+   +'<div class="share"><button type="button" id="shareBtn">Share this record</button>'+folBtn(e)
    +'<a class="permalink" href="/r/'+e.slug+'/">/r/'+e.slug+'/</a></div></div>';
   var since=e.since==null?'—':(e.since>365?(e.since/365).toFixed(1)+'<i>yr</i>':e.since+'<i>d</i>');
   var tr=e.trend==null?'—':(e.trend>0?'+':'')+e.trend;
@@ -587,7 +641,7 @@ new Promise(function(res){
     +(i.c?i.c.map(function(c){return '<p class="corr"><strong><a href="/corrections/">'+(CLBL.hasOwnProperty(c.k)?CLBL[c.k]:'Note')+'</a> '+fmt(c.d)+'.</strong> '+esc(c.t)+'</p>';}).join(''):'')
     +'</article>';}).join('');
   var hh=histHtml(e),mm=e.lat!=null?'<div class="lh-map"><div class="rmap" id="recmap" role="img" aria-label="Map showing '+esc(e.name)+'"></div></div>':'';
-  $('detail').innerHTML=head+stats+((hh||mm)?'<div class="lh">'+mm+hh+'</div>':'')+'<div class="timeline">'+(body||'<p class="empty">No inspections on file.</p>')+'</div>';
+  $('detail').innerHTML=head+stats+((hh||mm)?'<div class="lh">'+mm+hh+'</div>':'')+'<div class="timeline">'+(body||'<p class="empty">No inspections on file.</p>')+'</div>'+folBox(e);
   initRecMap(e); wireShare(e); if(!noPush)syncUrl(e,true);
   renderList();
  }
@@ -749,5 +803,33 @@ new Promise(function(res){
  var c=document.getElementById('count'); if(c){c.hidden=false;c.textContent='The records could not be loaded. Reload the page, or try again in a minute.';}
  if(window.console)console.error(err);
 });
+})();
+</script>
+<script>
+(function(){
+ var K='alertEmail';
+ try{localStorage.removeItem(K);}catch(e){}
+ function mem(v){try{if(v===undefined)return sessionStorage.getItem(K)||'';sessionStorage.setItem(K,v);}catch(e){return '';}}
+ function prefill(root){var m=mem();if(!m)return;(root||document).querySelectorAll('.fol-f input[type=email]').forEach(function(i){if(!i.value)i.value=m;});}
+ document.addEventListener('toggle',function(ev){var d=ev.target;if(!d.classList||!d.classList.contains('fol')||!d.open)return;
+  prefill(d);var i=d.querySelector('input[type=email]');if(i)setTimeout(function(){i.focus();},0);},true);
+ document.addEventListener('keydown',function(ev){if(ev.key!=='Escape')return;
+  document.querySelectorAll('details.fol[open]').forEach(function(d){d.open=false;var s=d.querySelector('summary');if(s)s.focus();});});
+ document.addEventListener('click',function(ev){
+  document.querySelectorAll('details.fol[open]').forEach(function(d){if(!d.contains(ev.target))d.open=false;});});
+ document.addEventListener('focusout',function(ev){var t=ev.target,d=t.closest&&t.closest('details.fol[open]');
+  if(d&&ev.relatedTarget&&!d.contains(ev.relatedTarget))d.open=false;});
+ document.addEventListener('submit',function(ev){
+  var f=ev.target;if(!f.classList||!f.classList.contains('fol-f'))return;
+  var inp=f.querySelector('input[type=email]'),btn=f.querySelector('button[type=submit]'),nm=f.querySelector('.fol-l b');
+  mem(inp.value.trim());
+  var al=f.querySelector('.fol-c input');
+  try{sessionStorage.setItem('alertSent',JSON.stringify({email:inp.value.trim(),name:nm?nm.textContent:'',all:!!(al&&al.checked),back:location.pathname+location.search}));}catch(e){}
+  if(window.plausible)plausible('Alert signup',{props:{kind:f.dataset.tag==='new-records'?'all':'record'}});
+  setTimeout(function(){btn.dataset.t=btn.textContent;btn.disabled=true;btn.textContent='Sending…';},0);
+  
+ });
+ document.addEventListener('focusin',function(ev){var i=ev.target;if(i.matches&&i.matches('.fol-f input[type=email]')&&!i.value){var m=mem();if(m)i.value=m;}});
+ window.addEventListener('pageshow',function(){document.querySelectorAll('.fol-f button[disabled]').forEach(function(b){b.disabled=false;b.textContent=b.dataset.t||'Email me';});});
 })();
 </script>

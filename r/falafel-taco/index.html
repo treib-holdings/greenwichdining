@@ -141,6 +141,12 @@ h1{font-family:"Zilla Slab",Georgia,serif;font-size:2rem;margin:0 0 6px;text-wra
  border:1px solid var(--rule);background:var(--surface);color:var(--ink);cursor:pointer;text-decoration:none}
 .share button:hover,.share a:hover{border-color:var(--accent);color:var(--accent)}
 .share button:focus-visible,.share a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.toprow{position:relative;display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin:14px 0 0}
+.toprow>button{font:inherit;font-size:.85rem;font-weight:600;padding:8px 15px;border-radius:7px;border:1px solid var(--rule);
+ background:var(--surface);color:var(--ink);cursor:pointer}
+.toprow>button:hover{border-color:var(--accent);color:var(--accent)}
+.toprow>button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+@media print{.toprow{display:none}}
 footer{margin-top:44px;padding-top:18px;border-top:1px solid var(--line);font-size:.82rem;color:var(--ink-3)}
 footer a{color:var(--accent)}
 .fnav2{display:flex;flex-wrap:wrap;gap:6px 18px;margin-bottom:12px}
@@ -156,6 +162,41 @@ footer a{color:var(--accent)}
 .d-clean{background:var(--clean)}.d-minor{background:var(--minor)}
 .d-priority{background:var(--prio)}.d-unverified,.d-none{background:var(--pend)}
 @media(max-width:560px){h1{font-size:1.6rem}}
+
+.fol{--f-soft:var(--soft,var(--surface-2));--f-rule:var(--rule,var(--line))}
+.fol summary,.fol-btn{display:inline-flex;align-items:center;gap:8px;list-style:none;cursor:pointer;font:inherit;font-size:.85rem;font-weight:600;
+ padding:8px 15px;border-radius:7px;border:1px solid var(--f-rule);background:var(--surface);color:var(--ink);user-select:none;-webkit-user-select:none}
+.fol summary::-webkit-details-marker{display:none}
+.fol summary:hover{border-color:var(--accent);color:var(--accent)}
+.fol summary:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.fol summary svg{width:16px;height:16px;flex:none}
+.fol[open]>summary{border-color:var(--accent);color:var(--accent)}
+.fol-pop{position:absolute;z-index:1100;left:0;top:calc(100% + 8px);width:min(440px,100%);padding:16px 18px 14px;background:var(--surface);
+ border:1px solid var(--f-rule);border-radius:10px;box-shadow:0 1px 2px rgba(16,38,40,.08),0 14px 34px -14px rgba(16,38,40,.38)}
+.fol-box{margin:26px 0 0;padding:18px 20px 16px;background:var(--f-soft);border-radius:9px}
+.fol-box .fol-in{max-width:520px}
+.fol .fol-h{font-family:"Zilla Slab",Georgia,serif;font-size:1.06rem;font-weight:700;line-height:1.25;margin:0 0 4px;color:var(--ink)}
+.fol-l{display:block;font-size:.92rem;line-height:1.45;color:var(--ink-2);margin:0 0 10px}
+.fol-l b{color:var(--ink);font-weight:600}
+.fol-r{display:flex;gap:8px;flex-wrap:wrap}
+.fol-r input[type=email]{flex:1 1 210px;min-width:0;font:inherit;padding:9px 11px;border:1px solid var(--f-rule);border-radius:7px;
+ background:var(--surface);color:var(--ink)}
+.fol-box .fol-r input[type=email]{background:var(--surface)}
+.fol-r input[type=email]::placeholder{color:var(--ink-2);opacity:1}
+.fol-r input[type=email]:focus-visible{outline:2px solid var(--accent);outline-offset:1px;border-color:var(--accent)}
+.fol-r button{font:inherit;font-weight:600;padding:9px 18px;border:0;border-radius:7px;background:var(--accent);color:var(--ground);cursor:pointer;white-space:nowrap}
+.fol-r button:hover{filter:brightness(1.08)}
+.fol-r button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.fol-r button[disabled]{opacity:.6;cursor:default}
+.fol .fol-n{font-size:.8rem;line-height:1.45;color:var(--ink-2);margin:9px 0 0}
+.fol .fol-n a{color:inherit}
+.fol .fol-n a:hover{color:var(--accent)}
+.fol-c{display:flex;align-items:flex-start;gap:9px;margin:0 0 12px;font-size:.86rem;line-height:1.4;color:var(--ink-2);cursor:pointer}
+.fol-c input{flex:none;width:17px;height:17px;margin:1px 0 0;accent-color:var(--accent);cursor:pointer}
+.fol-c input:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.fol-hp{position:absolute!important;left:-9999px!important;width:1px;height:1px;overflow:hidden}
+@media (max-width:560px){.fol-pop{width:100%}.fol-r button{flex:1 1 auto}}
+@media print{.fol,.fol-box{display:none}}
 </style>
 
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "LocalBusiness", "name": "Falafel Taco", "url": "https://greenwichdining.com/r/falafel-taco/", "address": {"@type": "PostalAddress", "streetAddress": "", "addressLocality": "Greenwich", "addressRegion": "CT", "addressCountry": "US"}}</script>
@@ -173,11 +214,12 @@ footer a{color:var(--accent)}
  <span class="badge b-clean">No violations</span>
  <p class="blurb">No violations were recorded at the most recent inspection.</p>
  
+ <div class="toprow"><button type="button" class="shbtn">Share this record</button></div>
  <div class="stats"><div class="stat"><b>2</b><span>Inspections</span></div><div class="stat"><b>2.1<i>yr</i></b><span>Since last</span></div><div class="stat"><b>4</b><span>Violations<em class="tiers">0 P &middot; 2 Pf &middot; 2 C</em></span></div><div class="stat"><b>0</b><span>Repeat</span></div><div class="stat"><b>—</b><span>Trend</span></div></div>
  <div class="lh"><div class="hist"><div class="hist-h"><h2 class="hist-t"><a href="/#how-history" title="How to read this chart">Inspection history</a></h2></div><div class="tl"><span class="g" aria-hidden="true" style="left:25.34%"><span>2024</span></span><span class="g" aria-hidden="true" style="left:53.28%"><span>2025</span></span><span class="g" aria-hidden="true" style="left:81.15%"><span>2026</span></span><ol role="list" aria-label="Inspections, oldest first"><li style="left:33.28%"><a href="#i-2024-04-14" title="Apr 14, 2024, routine: 4 violations (2 priority foundation, 2 core)"><em>4</em><span class="s C" style="height:12.0px"></span><span class="s Pf" style="height:12.0px"></span></a></li><li style="left:40.46%"><a href="#i-2024-07-17" title="Jul 17, 2024, routine: no violations"><span class="ok"></span></a></li></ol></div></div></div>
  <div class="insp" id="i-2024-07-17"><div class="ihead"><span class="idate">Jul 17, 2024</span><span class="itype">Routine</span><span class="icount" style="color:#2E7D53;background:#E4F1E9">no violations</span></div><p class="due"><a class="pdf" href="/contact/?request=ES%20-%20Inspections%20for%20FALAFEL%20TACO%20Type%20%20ROUTINE%20%20-%207-17-2024%20License%20%20%20LCB202100014%20for%20Parcel%20%20%2001-1586.pdf&est=Falafel%20Taco&date=2024-07-17&type=routine#request">Request a copy of the original inspection form</a></p></div><div class="insp" id="i-2024-04-14"><div class="ihead"><span class="idate">Apr 14, 2024</span><span class="itype">Routine</span><span class="icount" style="color:#9A6510;background:#F6EDDF">4 violations</span></div><div class="v Pf"><span class="vn">5</span><span class="vt">Written procedures for responding to vomiting and diarrheal events<span class="vd">The kitchen had no written plan for cleaning up after someone vomits or has diarrhea on the premises, an event that can spread norovirus widely.</span></span><span class="chip" style="color:var(--minor);background:var(--minor-bg)">Pf</span></div><div class="v Pf"><span class="vn">23</span><span class="vt">Proper date marking and disposition<span class="vd">Ready-to-eat food held more than 24 hours was not labeled with the date it was made or opened, or was kept past the seven-day limit.</span></span><span class="chip" style="color:var(--minor);background:var(--minor-bg)">Pf</span></div><div class="v C"><span class="vn">37</span><span class="vt">Food properly labeled; original container<span class="vd">Food taken out of its original container, or bulk items such as flour or sugar, was not labeled with what it is, or packaged food lacked required labels.</span></span><span class="chip" style="color:var(--pend);background:var(--pend-bg)">C</span></div><div class="v C"><span class="vn">44</span><span class="vt">Utensils/equipment/linens: properly stored, dried, &amp; handled<span class="vd">Clean dishes, utensils or linens were stored wet, in a dirty area, or in a way that exposed the surface that touches food.</span></span><span class="chip" style="color:var(--pend);background:var(--pend-bg)">C</span></div><p class="due">Corrections due: Priority Foundation: 72 hours; Core: 90 days</p><p class="due"><a class="pdf" href="/contact/?request=ES%20-%20Inspections%20for%20FALAFEL%20TACO%20Type%20%20ROUTINE%20%20-%204-14-2024%20License%20%20%20LCB202100014%20for%20Parcel%20%20%2001-1586-S.pdf&est=Falafel%20Taco&date=2024-04-14&type=routine#request">Request a copy of the original inspection form</a></p></div>
  <div class="share">
-  <button type="button" id="sh">Share this record</button>
+  <button type="button" id="sh" class="shbtn">Share this record</button>
   <a href="/">Search all establishments</a>
   <a href="/all/">Full A–Z list</a>
  </div>
@@ -193,14 +235,14 @@ footer a{color:var(--accent)}
 </footer>
 <script>
 (function(){
- var b=document.getElementById('sh'), u=location.href, t="Falafel Taco \u2014 Greenwich Dining Record";
- b.addEventListener('click',function(){
+ var u=location.href, t="Falafel Taco \u2014 Greenwich Dining Record";
+ document.querySelectorAll('.shbtn').forEach(function(b){b.addEventListener('click',function(){      // top of the record and end of it
   if(navigator.share){navigator.share({title:t,url:u}).catch(function(){});return;}
   var done=function(){var o=b.textContent;b.textContent='Link copied';setTimeout(function(){b.textContent=o;},1600);};
   if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(u).then(done,function(){});}
   else{var i=document.createElement('input');i.value=u;document.body.appendChild(i);i.select();
    try{document.execCommand('copy');done();}catch(e){}document.body.removeChild(i);}
- });
+ });});
 })();
 </script>
 <script>(function(){var b=document.getElementById('themeBtn');if(!b)return;

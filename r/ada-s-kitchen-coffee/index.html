@@ -141,6 +141,12 @@ h1{font-family:"Zilla Slab",Georgia,serif;font-size:2rem;margin:0 0 6px;text-wra
  border:1px solid var(--rule);background:var(--surface);color:var(--ink);cursor:pointer;text-decoration:none}
 .share button:hover,.share a:hover{border-color:var(--accent);color:var(--accent)}
 .share button:focus-visible,.share a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.toprow{position:relative;display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin:14px 0 0}
+.toprow>button{font:inherit;font-size:.85rem;font-weight:600;padding:8px 15px;border-radius:7px;border:1px solid var(--rule);
+ background:var(--surface);color:var(--ink);cursor:pointer}
+.toprow>button:hover{border-color:var(--accent);color:var(--accent)}
+.toprow>button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+@media print{.toprow{display:none}}
 footer{margin-top:44px;padding-top:18px;border-top:1px solid var(--line);font-size:.82rem;color:var(--ink-3)}
 footer a{color:var(--accent)}
 .fnav2{display:flex;flex-wrap:wrap;gap:6px 18px;margin-bottom:12px}
@@ -156,6 +162,41 @@ footer a{color:var(--accent)}
 .d-clean{background:var(--clean)}.d-minor{background:var(--minor)}
 .d-priority{background:var(--prio)}.d-unverified,.d-none{background:var(--pend)}
 @media(max-width:560px){h1{font-size:1.6rem}}
+
+.fol{--f-soft:var(--soft,var(--surface-2));--f-rule:var(--rule,var(--line))}
+.fol summary,.fol-btn{display:inline-flex;align-items:center;gap:8px;list-style:none;cursor:pointer;font:inherit;font-size:.85rem;font-weight:600;
+ padding:8px 15px;border-radius:7px;border:1px solid var(--f-rule);background:var(--surface);color:var(--ink);user-select:none;-webkit-user-select:none}
+.fol summary::-webkit-details-marker{display:none}
+.fol summary:hover{border-color:var(--accent);color:var(--accent)}
+.fol summary:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.fol summary svg{width:16px;height:16px;flex:none}
+.fol[open]>summary{border-color:var(--accent);color:var(--accent)}
+.fol-pop{position:absolute;z-index:1100;left:0;top:calc(100% + 8px);width:min(440px,100%);padding:16px 18px 14px;background:var(--surface);
+ border:1px solid var(--f-rule);border-radius:10px;box-shadow:0 1px 2px rgba(16,38,40,.08),0 14px 34px -14px rgba(16,38,40,.38)}
+.fol-box{margin:26px 0 0;padding:18px 20px 16px;background:var(--f-soft);border-radius:9px}
+.fol-box .fol-in{max-width:520px}
+.fol .fol-h{font-family:"Zilla Slab",Georgia,serif;font-size:1.06rem;font-weight:700;line-height:1.25;margin:0 0 4px;color:var(--ink)}
+.fol-l{display:block;font-size:.92rem;line-height:1.45;color:var(--ink-2);margin:0 0 10px}
+.fol-l b{color:var(--ink);font-weight:600}
+.fol-r{display:flex;gap:8px;flex-wrap:wrap}
+.fol-r input[type=email]{flex:1 1 210px;min-width:0;font:inherit;padding:9px 11px;border:1px solid var(--f-rule);border-radius:7px;
+ background:var(--surface);color:var(--ink)}
+.fol-box .fol-r input[type=email]{background:var(--surface)}
+.fol-r input[type=email]::placeholder{color:var(--ink-2);opacity:1}
+.fol-r input[type=email]:focus-visible{outline:2px solid var(--accent);outline-offset:1px;border-color:var(--accent)}
+.fol-r button{font:inherit;font-weight:600;padding:9px 18px;border:0;border-radius:7px;background:var(--accent);color:var(--ground);cursor:pointer;white-space:nowrap}
+.fol-r button:hover{filter:brightness(1.08)}
+.fol-r button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.fol-r button[disabled]{opacity:.6;cursor:default}
+.fol .fol-n{font-size:.8rem;line-height:1.45;color:var(--ink-2);margin:9px 0 0}
+.fol .fol-n a{color:inherit}
+.fol .fol-n a:hover{color:var(--accent)}
+.fol-c{display:flex;align-items:flex-start;gap:9px;margin:0 0 12px;font-size:.86rem;line-height:1.4;color:var(--ink-2);cursor:pointer}
+.fol-c input{flex:none;width:17px;height:17px;margin:1px 0 0;accent-color:var(--accent);cursor:pointer}
+.fol-c input:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.fol-hp{position:absolute!important;left:-9999px!important;width:1px;height:1px;overflow:hidden}
+@media (max-width:560px){.fol-pop{width:100%}.fol-r button{flex:1 1 auto}}
+@media print{.fol,.fol-box{display:none}}
 </style>
 
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "LocalBusiness", "name": "Ada S Kitchen   Coffee", "url": "https://greenwichdining.com/r/ada-s-kitchen-coffee/", "address": {"@type": "PostalAddress", "streetAddress": "", "addressLocality": "Greenwich", "addressRegion": "CT", "addressCountry": "US"}}</script>
@@ -173,11 +214,12 @@ footer a{color:var(--accent)}
  <span class="badge b-priority">Priority violation</span>
  <p class="blurb">At least one priority violation was recorded at the most recent inspection.</p>
  
+ <div class="toprow"><button type="button" class="shbtn">Share this record</button></div>
  <div class="stats"><div class="stat"><b>1</b><span>Inspections</span></div><div class="stat"><b>3.5<i>yr</i></b><span>Since last</span></div><div class="stat"><b>7</b><span>Violations<em class="tiers">6 P &middot; 0 Pf &middot; 1 C</em></span></div><div class="stat"><b>7</b><span>Repeat</span></div><div class="stat"><b>—</b><span>Trend</span></div></div>
  
  <div class="insp" id="i-2023-02-23"><div class="ihead"><span class="idate">Feb 23, 2023</span><span class="itype">Routine</span><span class="icount" style="color:#A9382F;background:#F7E6E4">7 violations</span></div><div class="v P"><span class="vn">3</span><span class="vt">Management, food employee and conditional employee; knowledge, responsibilities and reporting<span class="tag">repeat</span><span class="vd">Staff and managers did not know, or had no system for, reporting illnesses such as vomiting, diarrhea or jaundice that must keep a worker away from food.</span></span><span class="chip" style="color:var(--prio);background:var(--prio-bg)">P</span></div><div class="v P"><span class="vn">15</span><span class="vt">Food separated and protected<span class="tag">repeat</span><span class="vd">Raw meat, poultry, seafood or eggs were stored where they could drip onto or touch ready-to-eat food, or food was left uncovered.</span></span><span class="chip" style="color:var(--prio);background:var(--prio-bg)">P</span></div><div class="v P"><span class="vn">16</span><span class="vt">Food-contact surfaces: cleaned &amp; sanitized<span class="tag">repeat</span><span class="vd">Cutting boards, slicers, utensils or other surfaces that touch food were not being properly washed and sanitized between uses.</span></span><span class="chip" style="color:var(--prio);background:var(--prio-bg)">P</span></div><div class="v P"><span class="vn">20</span><span class="vt">Proper cooling time and temperatures<span class="tag">repeat</span><span class="vd">Cooked food was not cooled fast enough: from 135°F to 70°F within two hours and to 41°F within six, the window in which bacteria grow fastest.</span></span><span class="chip" style="color:var(--prio);background:var(--prio-bg)">P</span></div><div class="v P"><span class="vn">21</span><span class="vt">Proper hot holding temperatures<span class="tag">repeat</span><span class="vd">Food meant to be kept hot, such as soup or items on a steam table, was found below 135°F.</span></span><span class="chip" style="color:var(--prio);background:var(--prio-bg)">P</span></div><div class="v P"><span class="vn">22</span><span class="vt">Proper cold holding temperatures<span class="tag">repeat</span><span class="vd">Food meant to be kept cold, such as meat, dairy, cut produce or cooked leftovers, was found warmer than 41°F.</span></span><span class="chip" style="color:var(--prio);background:var(--prio-bg)">P</span></div><div class="v C"><span class="vn">36</span><span class="vt">Thermometers provided and accurate<span class="tag">repeat</span><span class="vd">No thermometer, or an inaccurate one, was available to check food or refrigerator temperatures.</span></span><span class="chip" style="color:var(--pend);background:var(--pend-bg)">C</span></div><p class="due">Corrections due: 2/27/23</p><p class="due"><a class="pdf" href="/contact/?request=ES%20-%20Inspections%20for%20ADA%20S%20KITCHEN%20%20%20COFFEE%20Type%20%20ROUTINE%20%20-%202-23-2023%20License%20%20%20LCB201500048%20for%20Parcel%20%20%2005-1565.pdf&est=Ada%20S%20Kitchen%20%20%20Coffee&date=2023-02-23&type=routine#request">Request a copy of the original inspection form</a></p><p class="note corr"><strong><a href="/corrections/">Record corrected</a> Sep 16, 2026.</strong> Item 36 is a core violation, as the form records, not priority foundation. The visit now shows items 3, 15, 16, 20, 21, 22 and 36, matching the inspector&#x27;s own count. Found in our own review of the original form.</p></div>
  <div class="share">
-  <button type="button" id="sh">Share this record</button>
+  <button type="button" id="sh" class="shbtn">Share this record</button>
   <a href="/">Search all establishments</a>
   <a href="/all/">Full A–Z list</a>
  </div>
@@ -193,14 +235,14 @@ footer a{color:var(--accent)}
 </footer>
 <script>
 (function(){
- var b=document.getElementById('sh'), u=location.href, t="Ada S Kitchen   Coffee \u2014 Greenwich Dining Record";
- b.addEventListener('click',function(){
+ var u=location.href, t="Ada S Kitchen   Coffee \u2014 Greenwich Dining Record";
+ document.querySelectorAll('.shbtn').forEach(function(b){b.addEventListener('click',function(){      // top of the record and end of it
   if(navigator.share){navigator.share({title:t,url:u}).catch(function(){});return;}
   var done=function(){var o=b.textContent;b.textContent='Link copied';setTimeout(function(){b.textContent=o;},1600);};
   if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(u).then(done,function(){});}
   else{var i=document.createElement('input');i.value=u;document.body.appendChild(i);i.select();
    try{document.execCommand('copy');done();}catch(e){}document.body.removeChild(i);}
- });
+ });});
 })();
 </script>
 <script>(function(){var b=document.getElementById('themeBtn');if(!b)return;
