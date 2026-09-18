@@ -264,11 +264,24 @@ footer a{color:var(--accent)}
  
  
 <section class="doc">
+ <p class="lede" id="sentFor" data-done="1" hidden></p>
  <p class="lede">That is all. You will get an email when there is something new, and not otherwise.</p>
  <p>To follow another establishment, open its record and choose <strong>Email me when this record
- updates</strong>. Every email carries a one-click unsubscribe, and a link to stop one place and keep the others.</p>
- <p><a href="/">Find an establishment &rarr;</a> &nbsp;&middot;&nbsp; <a href="/alerts/">How the alerts work</a></p>
-</section>
+ updates</strong>. An address that is already confirmed is not asked to confirm again. Every email carries a
+ one-click unsubscribe, and a link to stop one place and keep the others.</p>
+ <p><a id="sentBack" href="/">Find an establishment &rarr;</a> &nbsp;&middot;&nbsp; <a href="/alerts/">How the alerts work</a></p>
+</section><script>
+(function(){
+ var d;try{d=JSON.parse(sessionStorage.getItem('alertSent')||'null');}catch(e){}
+ if(!d)return;
+ var a=document.getElementById('sentTo'),n=document.getElementById('sentFor'),b=document.getElementById('sentBack');
+ if(a&&d.email){a.textContent=' to '+d.email;}
+ var what=[];if(d.name)what.push('the record for '+d.name+' updates');if(d.all)what.push('new records are published for any place');
+ if(n&&what.length){n.textContent=(n.getAttribute('data-done')?'You will now hear when ':'Once you have confirmed, you will hear when ')+what.join(', and when ')+'.';n.hidden=false;}
+ if(b&&typeof d.back==='string'){try{var u=new URL(d.back,location.href);   // same origin only: "/\\evil" and "/<TAB>/evil" parse off-origin
+  if(u.origin===location.origin){b.href=u.pathname+u.search;if(d.name)b.textContent='← Back to '+d.name;}}catch(e){}}
+})();
+</script>
 </main>
 <footer class="wrap">
  <nav class="fnav2"><a href="/all/">All establishments</a><a href="/lists/recently-inspected/">Recently inspected</a><a href="/violations/">What violations mean</a><a href="/research/">Does publishing this help?</a><a href="/alerts/">Email alerts</a><a href="/contact/">Contact</a><a href="/corrections/">Corrections</a><a href="/sponsorship/">Sponsorship</a><a href="/privacy/">Privacy</a><a href="https://www.instagram.com/greenwichdiningrecord/" rel="me noopener">Instagram</a></nav>

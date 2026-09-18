@@ -328,8 +328,7 @@ footer a{color:var(--accent)}
 </script><script>
 (function(){
  var K='alertEmail';
- try{localStorage.removeItem(K);}catch(e){}
- function mem(v){try{if(v===undefined)return sessionStorage.getItem(K)||'';sessionStorage.setItem(K,v);}catch(e){return '';}}
+ function mem(v){try{if(v===undefined)return localStorage.getItem(K)||'';localStorage.setItem(K,v);}catch(e){return '';}}
  function prefill(root){var m=mem();if(!m)return;(root||document).querySelectorAll('.fol-f input[type=email]').forEach(function(i){if(!i.value)i.value=m;});}
  document.addEventListener('toggle',function(ev){var d=ev.target;if(!d.classList||!d.classList.contains('fol')||!d.open)return;
   prefill(d);var i=d.querySelector('input[type=email]');if(i)setTimeout(function(){i.focus();},0);},true);
@@ -344,7 +343,7 @@ footer a{color:var(--accent)}
   var inp=f.querySelector('input[type=email]'),btn=f.querySelector('button[type=submit]'),nm=f.querySelector('.fol-l b');
   mem(inp.value.trim());
   var al=f.querySelector('.fol-c input');
-  try{sessionStorage.setItem('alertSent',JSON.stringify({email:inp.value.trim(),name:nm?nm.textContent:'',all:!!(al&&al.checked),back:location.pathname+location.search}));}catch(e){}
+  try{sessionStorage.setItem('alertSent',JSON.stringify({email:inp.value.trim(),name:nm?nm.textContent:'',all:!!(al&&al.checked)||f.dataset.tag==='new-records',back:location.pathname+location.search}));}catch(e){}
   if(window.plausible)plausible('Alert signup',{props:{kind:f.dataset.tag==='new-records'?'all':'record'}});
   setTimeout(function(){btn.dataset.t=btn.textContent;btn.disabled=true;btn.textContent='Sending…';},0);
   

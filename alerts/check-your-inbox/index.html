@@ -264,9 +264,7 @@ footer a{color:var(--accent)}
  
  
 <section class="doc">
- <p class="lede">We have sent one email<span id="sentTo"></span> with a confirmation link. If this is your first signup, nothing else is sent until you click it.</p>
- <p>Already confirmed this address on an earlier visit? Then you are set, and no new email is coming: what you
- just chose has been added to what you follow.</p>
+ <p class="lede">We have sent one email<span id="sentTo"></span> with a confirmation link. Nothing else is sent until you click it.</p>
  <p id="sentFor" hidden></p>
  <p>It comes from hello@greenwichdining.com. If it has not arrived in a few minutes, look in your spam or
  promotions folder, and if you find it there, marking it &ldquo;not spam&rdquo; will keep the alerts themselves
@@ -278,7 +276,8 @@ footer a{color:var(--accent)}
  if(!d)return;
  var a=document.getElementById('sentTo'),n=document.getElementById('sentFor'),b=document.getElementById('sentBack');
  if(a&&d.email){a.textContent=' to '+d.email;}
- if(n&&d.name){n.textContent='Once you have confirmed, you will hear when the record for '+d.name+' updates'+(d.all?', and when new records are published for any place.':'.');n.hidden=false;}
+ var what=[];if(d.name)what.push('the record for '+d.name+' updates');if(d.all)what.push('new records are published for any place');
+ if(n&&what.length){n.textContent=(n.getAttribute('data-done')?'You will now hear when ':'Once you have confirmed, you will hear when ')+what.join(', and when ')+'.';n.hidden=false;}
  if(b&&typeof d.back==='string'){try{var u=new URL(d.back,location.href);   // same origin only: "/\\evil" and "/<TAB>/evil" parse off-origin
   if(u.origin===location.origin){b.href=u.pathname+u.search;if(d.name)b.textContent='← Back to '+d.name;}}catch(e){}}
 })();
