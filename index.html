@@ -413,6 +413,7 @@ label();})();</script>
    <a href="/lists/cleanest-records/">Cleanest records</a>
    <a href="/lists/most-improved/">Most improved</a>
    <a href="/lists/declining-records/">Declining records</a>
+   <a href="/updates/">What&rsquo;s new</a>
    <a href="/alerts/">Email alerts</a>
    <a href="/contact/">Contact</a>
    <a href="/corrections/">Corrections</a>
@@ -428,9 +429,9 @@ label();})();</script>
   <p><strong>Please read.</strong> This is a reproduction of public records, not an official rating and not a health
   department grade. The town licenses all food service, so this list includes school, club and hotel kitchens, markets and
   delis alongside restaurants. Establishments marked closed appear in the inspection records but are not on the town's
-  July 2026 licensed list; their addresses are not included in that list. Every reading is cross-checked against the count the inspector
+  October 2026 licensed list; their addresses are not included in that list. Every reading is cross-checked against the count the inspector
   wrote on the form itself: <span id="fVer">most</span> reconcile, <span id="fNoSum">some</span> forms have no summary box
-  to check against, and <span id="fReview">a few</span> do not reconcile and should not be relied on. An inspection describes one moment in time. For the
+  to check against, and <span id="fReview">a few</span> <span id="fRevVerb">do</span> not reconcile and should not be relied on. An inspection describes one moment in time. For the
   authoritative record, contact the Greenwich Department of Health.</p>
  </footer>
 </div>
@@ -470,7 +471,7 @@ new Promise(function(res){
  $('mSpan').textContent=META.span[0].slice(0,4)+'–'+META.span[1].slice(0,4);
  if($('fN'))$('fN').textContent=META.n_est;
  $('fSpan').textContent=fmt(META.span[0])+' through '+fmt(META.span[1]);
- $('fReview').textContent=META.n_review;
+ $('fReview').textContent=META.n_review; if($('fRevVerb'))$('fRevVerb').textContent=META.n_review===1?'does':'do';
  if($('fVer'))$('fVer').textContent=META.n_verified.toLocaleString();
  if($('fNoSum'))$('fNoSum').textContent=META.n_nosummary;
 
@@ -609,7 +610,7 @@ new Promise(function(res){
   var relNote='';
   if(e.rel)relNote+='<p class="verdict">'+REL[e.rel.kind][0].replace('{a}','<a href="/r/'+e.rel.slug+'/">'+esc(e.rel.name)+'</a>').replace('{lic}',esc(e.rel.lic||''))+'</p>';
   (e.rel_from||[]).forEach(function(r){relNote+='<p class="verdict">'+REL[r.kind][1].replace('{a}','<a href="/r/'+r.slug+'/">'+esc(r.name)+'</a>').replace('{lic}',esc(r.lic||''))+'</p>';});
-  var closedNote=e.status==='closed'?'<p class="verdict"><strong>No longer on the town\'s licensed list.</strong> This establishment was inspected during the record period but does not appear among establishments licensed and open as of July 2026.</p>':'';
+  var closedNote=e.status==='closed'?'<p class="verdict"><strong>No longer on the town\'s licensed list.</strong> This establishment was inspected during the record period but does not appear among establishments licensed and open as of October 2026.</p>':'';
   var head='<a class="backmap" href="/" id="backMap">&larr; Back to the map</a><div class="rec-head"><h2>'+esc(e.name)+'</h2><div class="rec-sub">'+bits+'</div>'
    +'<p class="verdict"><span class="chip c-'+e.ind+'">'+LABEL[e.ind]+'</span>'+SAYS[e.ind]+'</p>'+closedNote+relNote
    +'<div class="share"><button type="button" id="shareBtn">Share this record</button>'+folBtn(e)
